@@ -1,0 +1,11 @@
+FROM @@nodeType:@@nodeEngine
+
+ENV ENVIRONMENT=local
+ENV PORT=5000
+ENV CONSOLE_LOGLEVEL=silly
+
+ADD . /@@packageName/
+
+EXPOSE ${PORT}
+
+CMD cd /@@packageName && @@startCommand @@packageMain
