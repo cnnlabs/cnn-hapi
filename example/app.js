@@ -1,23 +1,25 @@
-var port = process.env.PORT || 3000;
-var hapi = require('../main');
-var path =require('path');
-var debug = require('debug')('example');
-var cnnhealth = require('cnn-health');
+const path = require('path'),
+    hapi = require('../main'),
+    cnnhealth = require('cnn-health'),
+    healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck'));
 
-const healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck'));
-var app = module.exports = hapi({
+let app = module.exports = hapi({
     directory: __dirname,
-    port:8080,
-    withSwagger:true,
+    port: process.env.PORT,
+    withSwagger: true,
     withNavigation: false,
-    layoutsDir: __dirname + '/views/',
+    layoutsDir: `${__dirname}/views/`,
     healthChecks: healthChecks.asArray()
 });
 
-app.route({method:'GET', path:'/', handler:function(request, reply) {
-    reply('Hello router');
-}});
+app.route({
+    method: 'GET',
+    path: '/',
+    handler: function (request, reply) {
+        reply('Hello router');
+    }
+});
 
-app.start(function(){
+app.start(function () {
     console.log('App Starting');
-})
+});

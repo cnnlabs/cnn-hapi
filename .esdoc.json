@@ -1,5 +1,5 @@
 {
-    "title": "hapi-boilerplate",
+    "title": "CNN Hapi",
     "source": "./",
     "destination": "./docs",
     "excludes": ["docs", "node_modules"],

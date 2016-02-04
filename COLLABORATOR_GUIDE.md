@@ -1,8 +1,5 @@
 # Collaborator Guide
 
-This really only applies if you are on GitHub.  Bitbucket does things
-differently and this doesn't work out so well.
-
 **Contents**
 
 - [Issues and Pull Requests](#issues-and-pull-requests)
@@ -14,7 +11,7 @@ differently and this doesn't work out so well.
 
 This document contains information for Collaborators of this project regarding
 maintaining the code, documentation and issues.  This is almost exactly the same
-as the [io.js Collaborator Guide](https://github.com/nodejs/io.js/blob/master/COLLABORATOR_GUIDE.md)
+as the [node.js Collaborator Guide](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md)
 with changes to be a bit more generic and apply to projects with a single
 Project Owner (PO) versus a Technical Committee (TC).
 

@@ -38,8 +38,7 @@ and built upon.
 ### Step 2: Branch
 
 Create a feature branch and start making changes.  The name of the feature
-branch should be the GitHub issue number, like `issue-1`.  If there is no
-GitHub issue number to use, put in the Jira ticket number, like `CNNPOL-152`.
+branch should be the GitHub issue number, like `issue-1`.
 
 ```shell
 $ git checkout -b issue-1
@@ -91,7 +90,6 @@ The body can be several paragraphs.  Try to limit the line length to around 72
 characters or so.
 
 Fixes: #12
-Fixes: http://tickets.turner.com/browse/CNNPOL-152
 Reviewed-By: Your Name <your.email@turner.com>
 ```
 
