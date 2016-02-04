@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path'),
     hapi = require('../main'),
     cnnhealth = require('cnn-health'),
