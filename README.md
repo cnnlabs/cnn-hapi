@@ -1,5 +1,15 @@
 # CNN Hapi
 
+Base [Hapi](http://hapijs.com/) server with some baked in features that can be
+pulled in as a dependency of another application to extend as needed.
+
+Some of the more interesting baked in features are:
+
+- Swagger on /documentation
+- Healthcheck on /healthcheck
+- Basic logging
+- Basic metrics
+
 
 ## Requirements
 
@@ -15,6 +25,9 @@ $ npm install
 
 ## Usage
 
+Look at the example/app.js to see an example of how this can be pulled in as a
+dependency.  You can see it running by doing the following.
+
 ```shell
 $ PORT=5000 node example/app.js
 HttpResponse { buckets: {}, reporter: [Function: bound ] }
@@ -27,7 +40,8 @@ Logging to Graphite is disabled by default on non-production environments. To en
 Logging to Graphite is disabled by default on non-production environments. To enable is set NODE_ENV to "production". Or set DEBUGMETRICS=1 to debug metric counters
 ```
 
-You can also navigate to http://localhost:5000 and see a served page.
+You can also navigate to localhost:5000 and see a served page.  Also check out
+localhost:5000/documentation and localhost:5000/healthcheck.
 
 
 ## Contributing
