@@ -1,9 +1,9 @@
 # CNN Hapi
 
-Base [Hapi](http://hapijs.com/) server with some baked in features that can be
+Basic [Hapi](http://hapijs.com/) server with some baked in features that can be
 pulled in as a dependency of another application to extend as needed.
 
-Some of the more interesting baked in features are:
+Features include:
 
 - Swagger on /documentation
 - Healthcheck on /healthcheck
