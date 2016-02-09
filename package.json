@@ -6,23 +6,25 @@
   "scripts": {
     "generate-changelog": "changelog-maker --group",
     "generate-docs": "rm -rf docs && esdoc -c .esdoc.json",
-    "test": "eslint *.js **/*.js && test/validate-json-files.sh"
+    "test": "eslint *.js **/*.js && test/validate-json-files.sh",
+    "update-apply": "ncu -u",
+    "update-check": "ncu"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CNN-Labs/cnn-hapi"
+    "url": "https://github.com/cnnlabs/cnn-hapi"
   },
   "bugs": {
-    "url": "https://github.com/CNN-Labs/cnn-hapi/issues"
+    "url": "https://github.com/cnnlabs/cnn-hapi/issues"
   },
-  "homepage": "https://github.com/CNN-Labs/cnn-hapi",
+  "homepage": "https://github.com/cnnlabs/cnn-hapi#readme",
   "engines": {
-    "node": "4.2.6"
+    "node": ">=4.2.6"
   },
   "dependencies": {
     "boom": "3.1.2",
-    "cnn-health": "0.0.1",
-    "cnn-metrics": "0.1.0",
+    "cnn-health": "0.0.2",
+    "cnn-metrics": "0.2.0",
     "debounce": "1.0.0",
     "debug": "2.2.0",
     "engine.io": "1.6.8",
@@ -45,7 +47,8 @@
     "esdoc": "0.4.3",
     "eslint": "1.10.3",
     "jq-cli-wrapper": "0.3.0",
-    "jsonlint": "1.6.2"
+    "jsonlint": "1.6.2",
+    "npm-check-updates": "2.5.8"
   },
   "license": "ISC"
 }

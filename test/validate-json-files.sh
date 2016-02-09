@@ -19,6 +19,7 @@ JSON_FILES=(`find . \
             `)
 
 for file in "${JSON_FILES[@]}"; do
+    echo "validating json: ${file}"
     node_modules/.bin/jsonlint "${file}" -q
     if [ $? -eq 1 ]; then
         echo "${file}"
