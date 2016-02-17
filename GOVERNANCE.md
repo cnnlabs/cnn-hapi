@@ -8,7 +8,7 @@ the entire project.
 
 The PO has final authority over this project.
 
-For the current PO, see the project [README.md](./README.md#project-owner).
+For the current PO, see the project README.md.
 
 
 ## Collaborators
@@ -36,9 +36,6 @@ Collaborators may opt to elevate signification or controversial modifications,
 or modifications that have not found consensus to the PO for discussion by
 assigning the ***po-review*** tag to a pull request or issue.  The PO should
 serve as the final arbiter where required.
-
-For the current list of Collaborators, see the project
-[README.md](./README.md#current-project-team-members).
 
 A guide for Collaborators is maintained in
 [COLLABORATOR_GUIDE.md](./COLLABORATOR_GUIDE.md).

@@ -2,8 +2,8 @@
 
 let returnExport =  {
     name: 'APIs',
-    description : 'External Health used by Service',
-    checks : [
+    description: 'External Health used by Service',
+    checks: [
         {
             name: 'PlatformAPI HealthChecks',
             severity: 2,
@@ -12,13 +12,14 @@ let returnExport =  {
             panicGuide: 'Dont Know yet',
             type: 'json',
             url: 'http://www.cnn.com/_healthcheck',
-            callback: version => version,
-            checkResult : {
+            callback: (version) => version,
+            checkResult: {
                 PASSED: 'Successful response from the  endpoint',
-                FAILED : 'Bad response from the endpoint',
-                PENDING : 'This test has not yet run'
+                FAILED: 'Bad response from the endpoint',
+                PENDING: 'This test has not yet run'
             }
         }
     ]
-};    
+};
+
 module.exports = returnExport;
