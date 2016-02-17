@@ -1,3 +1,4 @@
+/* global fetch */
 'use strict';
 
 const debug = require('debug')('checks'),
