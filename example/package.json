@@ -3,5 +3,8 @@
   "version": "0.1.0",
   "description": "This is a demo",
   "main": "app.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cnn-metrics": "^0.3.2"
+  }
 }
