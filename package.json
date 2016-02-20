@@ -1,6 +1,6 @@
 {
   "name": "cnn-hapi",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "This is a generic Hapi server for starting projects.",
   "main": "main.js",
   "directories": {
@@ -29,7 +29,7 @@
   "dependencies": {
     "boom": "3.1.2",
     "cnn-health": "0.0.2",
-    "cnn-metrics": "0.3.0",
+    "cnn-metrics": "0.3.1",
     "debounce": "1.0.0",
     "debug": "2.2.0",
     "engine.io": "1.6.8",
