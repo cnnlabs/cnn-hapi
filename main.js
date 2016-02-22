@@ -4,7 +4,8 @@ const hapi = require('hapi'),
     Hoek = require('hoek'),
     robots = require('./lib/hapi/robots'),
     cleanName = require('./lib/clean-name'),
-    packageConfig = require('./package.json');
+    packageConfig = require('./package.json'),
+    metricsProvider = {};
 
 require('isomorphic-fetch');
 
@@ -105,6 +106,7 @@ module.exports = function (options) {
 
     if (options.metrics) {
         options.metrics.provider.init({app: name, flushEvery: options.metrics.options.flushEvery});
+        metricsProvider = options.metrics.provider;
     }
 
     server.register(require('inert'), () => {});
@@ -170,5 +172,5 @@ module.exports = function (options) {
 };
 
 
-module.exports.services = metrics.services;
-module.exports.metrics = metrics;
+module.exports.services = metricsProvider.services;
+module.exports.metrics = metricsProvider;
