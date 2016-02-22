@@ -11,6 +11,7 @@
 const path = require('path'),
     hapi = require('../main'), // hapi = require('cnn-hapi'),
     cnnhealth = require('cnn-health'),
+    cnnmetrics = require('cnn-metrics'),
     healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck'));
 
 let app = module.exports = hapi({
@@ -18,6 +19,7 @@ let app = module.exports = hapi({
     port: process.env.PORT,
     withSwagger: true,
     withNavigation: false,
+    metrics: {provider: cnnmetrics, options: {flushEvery: 2 * 1000}},
     layoutsDir: `${__dirname}/views/`,
     healthChecks: healthChecks.asArray()
 });

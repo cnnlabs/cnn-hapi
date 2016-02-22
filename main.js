@@ -2,9 +2,9 @@
 
 const hapi = require('hapi'),
     Hoek = require('hoek'),
-    metrics = require('cnn-metrics'),
     robots = require('./lib/hapi/robots'),
     cleanName = require('./lib/clean-name'),
+    metrics = require('cnn-metrics'),
     packageConfig = require('./package.json');
 
 require('isomorphic-fetch');
@@ -52,11 +52,13 @@ let setupHealthCheck = function (request, reply) {
 
 module.exports = function (options) {
     let packageJson = {},
+        metricOptions = {flushEvery: 6 * 1000},
         defaults = {
             port: 3000,
             withFlags: true,
             withSwagger: false,
             withHandlebars: true,
+            metrics: {provider: metrics, options: metricOptions},
             withBackendAuthentication: true,
             healthChecks: []
         },
@@ -65,6 +67,7 @@ module.exports = function (options) {
         server = new hapi.Server(),
         name = options.name,
         description = '',
+        version ='',
         directory = options.directory || process.cwd(),
         actualAppStart;
 
@@ -77,7 +80,8 @@ module.exports = function (options) {
         try {
             packageJson = require(`${directory}/package.json`);
             name = packageJson.name;
-            description = packageJson.description || '';
+            description = packageJson.description;
+            version = packageJson.version;
         } catch (e) {
             // No problem
         }
@@ -100,9 +104,12 @@ module.exports = function (options) {
         //Its OK
     }
 
+    if (options.metrics) {
+        options.metrics.provider.init({app: name, flushEvery: options.metrics.options.flushEvery});
+    }
+
     server.register(require('inert'), () => {});
 
-    metrics.init({app: name, flushEvery: 1000 * 6});
 
     if (options.withSwagger) {
         server.register(require('vision'), () => {});
@@ -110,9 +117,8 @@ module.exports = function (options) {
             register: require('hapi-swagger'),
             options: {
                 info: {
-                    version: packageConfig.version,
-                    title: packageConfig.name,
-                    description: packageConfig.description
+                    title: options.name,
+                    description: options.description
                 }
             }
         });
@@ -122,7 +128,7 @@ module.exports = function (options) {
         register: require('./lib/plugins/metrics'),
         options: {
             message: 'hello',
-            metrics: metrics
+            metrics: options.metrics
         }
     });
 
