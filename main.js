@@ -58,7 +58,7 @@ module.exports = function (options) {
             withFlags: true,
             withSwagger: false,
             withHandlebars: true,
-            metrics: {provider: metrics, options: metricOptions},
+            metrics: {provider: require('cnn-metrics'), options: {flushEvery: 6 * 1000}},
             withBackendAuthentication: true,
             healthChecks: []
         },
@@ -123,15 +123,17 @@ module.exports = function (options) {
             }
         });
     }
-
-    server.register({
-        register: require('./lib/plugins/metrics'),
-        options: {
-            message: 'hello',
-            metrics: options.metrics
-        }
-    });
-
+    
+    if (options.metrics.provider) {
+        server.register({
+            register: require('./lib/plugins/metrics'),
+            options: {
+                message: 'hello',
+                metrics: options.metrics.provider
+            }
+        });   
+    };
+    
     server.route({
         method: 'GET',
         path: '/robots.txt',
