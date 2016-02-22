@@ -4,7 +4,6 @@ const hapi = require('hapi'),
     Hoek = require('hoek'),
     robots = require('./lib/hapi/robots'),
     cleanName = require('./lib/clean-name'),
-    metrics = require('cnn-metrics'),
     packageConfig = require('./package.json');
 
 require('isomorphic-fetch');
@@ -58,7 +57,7 @@ module.exports = function (options) {
             withFlags: true,
             withSwagger: false,
             withHandlebars: true,
-            metrics: {provider: require('cnn-metrics'), options: {flushEvery: 6 * 1000}},
+            metrics: {provider: require('cnn-metrics'), options: metricOptions},
             withBackendAuthentication: true,
             healthChecks: []
         },
