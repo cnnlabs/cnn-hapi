@@ -18,7 +18,7 @@ let app = module.exports = hapi({
     port: process.env.PORT,
     withSwagger: true,
     withNavigation: false,
-    metrics: {provider: require('cnn-metrics'), options: {flushEvery: 2 * 1000}},
+    metrics: {provider: require('cnn-metrics'), options: {flushEvery: 20 * 1000}},
     layoutsDir: `${__dirname}/views/`,
     healthChecks: healthChecks.asArray()
 });

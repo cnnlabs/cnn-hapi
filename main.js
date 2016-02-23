@@ -4,8 +4,8 @@ const hapi = require('hapi'),
     Hoek = require('hoek'),
     robots = require('./lib/hapi/robots'),
     cleanName = require('./lib/clean-name'),
-    packageConfig = require('./package.json'),
-    metricsProvider = {};
+    packageConfig = require('./package.json');
+ 
 
 require('isomorphic-fetch');
 
@@ -16,38 +16,39 @@ let setupHealthCheck = function (request, reply) {
             return check.getStatus();
         });
 
-    if (checks.length === 0) {
-        checks.push({
-            name: 'App has no healthchecks',
-            ok: false,
-            severity: 3,
-            businessImpact: 'If this application encounters any problems, nobody will be alerted and it probably will not get fixed.',
-            technicalSummary: 'This app has no healthchecks set up',
-            panicGuide: 'Don\'t Panic',
-            lastUpdated: new Date()
-        });
-    }
+        if (checks.length === 0) {
+            checks.push({
+                name: 'App has no healthchecks',
+                ok: false,
+                severity: 3,
+                businessImpact: 'If this application encounters any problems, nobody will be alerted and it probably will not get fixed.',
+                technicalSummary: 'This app has no healthchecks set up',
+                panicGuide: 'Don\'t Panic',
+                lastUpdated: new Date()
+            });
+        }
 
-    if (request.params[0]) {
-        checks.forEach(function (check) {
-            if (check.severity <= Number(request.params.checknumber) && check.ok === false) {
-                reply.code(500);
-            }
-        });
-    }
+        if (request.params[0]) {
+            checks.forEach(function (check) {
+                if (check.severity <= Number(request.params.checknumber) && check.ok === false) {
+                    reply.code(500);
+                }
+            });
+        }
 
-    //response.send();
-    payload = JSON.stringify({
-        schemaVersion: 1,
-        name: `CNN-${request.app.__name}`,
-        description: request.app.__description,
-        checks: checks
-    }, undefined, 2);
+        //response.send();
+        payload = JSON.stringify({
+            schemaVersion: 1,
+            name: `CNN-${request.app.__name}`,
+            description: request.app.__description,
+            checks: checks
+        }, undefined, 2);
 
-    response = reply(payload);
-    response.header('Cache-Control', 'private, no-cache, max-age=0');
-    response.header('Content-Type', 'application/json');
-};
+        response = reply(payload);
+        response.header('Cache-Control', 'private, no-cache, max-age=0');
+        response.header('Content-Type', 'application/json');
+    },
+    metricsProvider = {};
 
 
 module.exports = function (options) {
