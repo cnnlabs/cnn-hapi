@@ -25,8 +25,9 @@ $ npm install
 
 ## Usage
 
-Look at the [/example/app.js](./example/app.js) to see an example of how this can be pulled in as a
-dependency.  You can see it running by doing the following.
+Look at the [/example/app.js](./example/app.js) to see an example of how this
+can be pulled in as a dependency.  You can see it running by doing the
+following.
 
 ```shell
 $ PORT=5000 node example/app.js

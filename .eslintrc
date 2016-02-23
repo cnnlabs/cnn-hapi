@@ -20,6 +20,7 @@
         "keyword-spacing":             2,
         "linebreak-style":             [2, "unix"],
         "no-console":                  0,
+        "no-trailing-spaces":          2,
         "object-curly-spacing":        [2, "never"],
         "one-var":                     [2, "always"],
         "prefer-template":             2,
