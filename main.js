@@ -3,18 +3,17 @@
 const hapi = require('hapi'),
     Hoek = require('hoek'),
     robots = require('./lib/hapi/robots'),
-    cleanName = require('./lib/clean-name'),
-    packageConfig = require('./package.json');
- 
+    cleanName = require('./lib/clean-name');
+
 
 require('isomorphic-fetch');
 
 let setupHealthCheck = function (request, reply) {
-    let payload,
-        response,
-        checks = request.server.app.__healthchecks.map(function (check) {
-            return check.getStatus();
-        });
+        let payload,
+            response,
+            checks = request.server.app.__healthchecks.map(function (check) {
+                return check.getStatus();
+            });
 
         if (checks.length === 0) {
             checks.push({
@@ -68,7 +67,6 @@ module.exports = function (options) {
         server = new hapi.Server(),
         name = options.name,
         description = '',
-        version ='',
         directory = options.directory || process.cwd(),
         actualAppStart;
 
@@ -82,7 +80,6 @@ module.exports = function (options) {
             packageJson = require(`${directory}/package.json`);
             name = packageJson.name;
             description = packageJson.description;
-            version = packageJson.version;
         } catch (e) {
             // No problem
         }
@@ -125,7 +122,7 @@ module.exports = function (options) {
             }
         });
     }
-    
+
     if (options.metrics.provider) {
         server.register({
             register: require('./lib/plugins/metrics'),
@@ -133,9 +130,9 @@ module.exports = function (options) {
                 message: 'hello',
                 metrics: options.metrics.provider
             }
-        });   
-    };
-    
+        });
+    }
+
     server.route({
         method: 'GET',
         path: '/robots.txt',
