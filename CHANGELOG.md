@@ -1,5 +1,26 @@
 # CNN Hapi Changelog
 
+
+## 2016-02-23, Version 0.4.1, @jamsyoung
+
+### Notable changes
+
+- Fix conflict with multiple package.json files in the repo and the badges
+
+
+### Known issues
+
+See https://github.com/TurnerBroadcasting/ksa/labels/defect for complete and
+current list of known issues.
+
+
+### Commits
+
+* [[`2c856a2ae6`](https://github.com/cnnlabs/cnn-hapi/commit/2c856a2ae6)] - **hotfix**: remove dependencies from example package.json (James Young)
+
+
+
+
 ## 2016-02-23, Version 0.4.0, @jamsyoung
 
 ### Notable changes
