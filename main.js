@@ -54,23 +54,22 @@ let setupHealthCheck = function (request, reply) {
     metricsProvider = {};
 
 /**
- * Setup static content cache control headers
- * @private
- * @param {object} request - Request object
- */
-function getStaticCacheControlHeaders(request) {
-    request.response.header('Surrogate-Control', cdnSurrogateControl);
-    request.response.header('Cache-Control', cdnCacheControl);
-}
-
-/**
  * Set up cache control headers
  * @private
  * @param {object} request - Request object
+ * @param {string} cacheControlType - The cache control header to set
  */
-function getCacheControlHeaders(request) {
-    request.response.header('Surrogate-Control', surrogateControlHeader);
-    request.response.header('Cache-Control', cacheControlHeader);
+function getCacheControlHeaders(request, cacheControlType) {
+    switch (cacheControlType) {
+        case 'cdn':
+            request.response.header('Surrogate-Control', cdnSurrogateControl);
+            request.response.header('Cache-Control', cdnCacheControl);
+            break;
+        case 'browser':
+            request.response.header('Surrogate-Control', surrogateControlHeader);
+            request.response.header('Cache-Control', cacheControlHeader);
+            break;
+    }
 }
 
 module.exports = function (options) {
@@ -186,14 +185,7 @@ module.exports = function (options) {
     server.ext({
         type: 'onPreResponse',
         method: function (request, reply) {
-            switch (cacheControlType) {
-                case 'cdn':
-                    getCacheControlHeaders(request);
-                    break;
-                case 'browser':
-                    getStaticCacheControlHeaders(request);
-                    break;
-            }
+            getCacheControlHeaders(request, cacheControlType);
             return reply.continue();
         }
     });
