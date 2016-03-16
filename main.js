@@ -94,7 +94,7 @@ module.exports = function (options) {
         description = '',
         directory = options.directory || process.cwd(),
         actualAppStart,
-        cacheControlType = options.cacheControlType || 'browser'; //cdn || browser
+        cacheControlType = process.env.CACHE_CONTROL_TYPE || options.cacheControlType; //cdn || browser
 
     options = options || {};
     options = Hoek.applyToDefaults(defaults, options);
