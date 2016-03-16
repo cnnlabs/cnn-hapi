@@ -57,9 +57,8 @@ let setupHealthCheck = function (request, reply) {
  * Setup static content cache control headers
  * @private
  * @param {object} request - Request object
- * @param {object} reply - Response object
  */
-function getStaticCacheControlHeaders(request, reply) {
+function getStaticCacheControlHeaders(request) {
     request.response.header('Surrogate-Control', cdnSurrogateControl);
     request.response.header('Cache-Control', cdnCacheControl);
 }
@@ -68,9 +67,8 @@ function getStaticCacheControlHeaders(request, reply) {
  * Set up cache control headers
  * @private
  * @param {object} request - Request object
- * @param {object} reply - Response object
  */
-function getCacheControlHeaders(request, reply) {
+function getCacheControlHeaders(request) {
     request.response.header('Surrogate-Control', surrogateControlHeader);
     request.response.header('Cache-Control', cacheControlHeader);
 }
@@ -190,10 +188,10 @@ module.exports = function (options) {
         method: function (request, reply) {
             switch (cacheControlType) {
                 case 'cdn':
-                    getCacheControlHeaders(request, reply);
+                    getCacheControlHeaders(request);
                     break;
                 case 'browser':
-                    getStaticCacheControlHeaders(request, reply);
+                    getStaticCacheControlHeaders(request);
                     break;
             }
             return reply.continue();
