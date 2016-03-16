@@ -14,6 +14,7 @@ const path = require('path'),
     healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck'));
 
 let app = module.exports = hapi({
+    cacheControlType: 'browser',
     directory: __dirname,
     port: process.env.PORT,
     withSwagger: true,
