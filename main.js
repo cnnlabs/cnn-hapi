@@ -3,7 +3,11 @@
 const hapi = require('hapi'),
     Hoek = require('hoek'),
     robots = require('./lib/hapi/robots'),
-    cleanName = require('./lib/clean-name');
+    cleanName = require('./lib/clean-name'),
+    cacheControlHeader = process.env.BROWSER_CACHE_CONTROL || 'max-age=60', // Default cache time is 60 seconds
+    surrogateControlHeader = process.env.SURROGATE_CACHE_CONTROL || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400', // Default from Fastly
+    cdnCacheControl = process.env.CDN_CACHE_CONTROL || 'max-age=2592000', // Default cache time is 30 days
+    cdnSurrogateControl = process.env.CDN_SURROGATE_CONTROL || 'max-age=2592000, stale-while-revalidate=60, stale-if-error=86400'; // Default from Fastly
 
 
 require('isomorphic-fetch');
@@ -49,6 +53,27 @@ let setupHealthCheck = function (request, reply) {
     },
     metricsProvider = {};
 
+/**
+ * Setup static content cache control headers
+ * @private
+ * @param {object} request - Request object
+ * @param {object} reply - Response object
+ */
+function getStaticCacheControlHeaders(request, reply) {
+    request.response.header('Surrogate-Control', cdnSurrogateControl);
+    request.response.header('Cache-Control', cdnCacheControl);
+}
+
+/**
+ * Set up cache control headers
+ * @private
+ * @param {object} request - Request object
+ * @param {object} reply - Response object
+ */
+function getCacheControlHeaders(request, reply) {
+    request.response.header('Surrogate-Control', surrogateControlHeader);
+    request.response.header('Cache-Control', cacheControlHeader);
+}
 
 module.exports = function (options) {
     let packageJson = {},
@@ -63,12 +88,13 @@ module.exports = function (options) {
             healthChecks: []
         },
         port = process.env.PORT || options.port,
-        environment  = process.env.NODE_ENV || '',
+        environment  = process.env.NODE_ENV || process.env.ENVIRONMENT || '',
         server = new hapi.Server(),
         name = options.name,
         description = '',
         directory = options.directory || process.cwd(),
-        actualAppStart;
+        actualAppStart,
+        cacheControlType = options.cacheControlType || 'browser'; //cdn || browser
 
     options = options || {};
     options = Hoek.applyToDefaults(defaults, options);
@@ -157,6 +183,21 @@ module.exports = function (options) {
         method: 'GET',
         path: '/__health/{checknumber?}',
         handler: setupHealthCheck
+    });
+
+    server.ext({
+        type: 'onPreResponse',
+        method: function (request, reply) {
+            switch (cacheControlType) {
+                case 'cdn':
+                    getCacheControlHeaders(request, reply);
+                    break;
+                case 'browser':
+                    getStaticCacheControlHeaders(request, reply);
+                    break;
+            }
+            return reply.continue();
+        }
     });
 
     actualAppStart = server.start;
