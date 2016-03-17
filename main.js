@@ -55,7 +55,7 @@ let setupHealthCheck = function (request, reply) {
  * @param {object} request - Request object
  * @param {object} headers - The cache control headers to set
  */
-function getCacheControlHeaders(request, headers) {
+function setCacheControlHeaders(request, headers) {
     let surrogateControl = headers.surrogateCacheControl ? headers.surrogateCacheControl : false,
         cacheControl = headers.cacheControlHeader ? headers.cacheControlHeader : false;
 
@@ -186,7 +186,7 @@ module.exports = function (options) {
     server.ext({
         type: 'onPreResponse',
         method: function (request, reply) {
-            getCacheControlHeaders(request, cacheHeaders);
+            setCacheControlHeaders(request, cacheHeaders);
             return reply.continue();
         }
     });
