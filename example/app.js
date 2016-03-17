@@ -14,14 +14,15 @@ const path = require('path'),
     healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck'));
 
 let app = module.exports = hapi({
-    cacheControlType: 'browser',
     directory: __dirname,
     port: process.env.PORT,
     withSwagger: true,
     withNavigation: false,
     metrics: {provider: require('cnn-metrics'), options: {flushEvery: 20 * 1000}},
     layoutsDir: `${__dirname}/views/`,
-    healthChecks: healthChecks.asArray()
+    healthChecks: healthChecks.asArray(),
+    maxAge: '10',
+    surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400'
 });
 
 app.route({
