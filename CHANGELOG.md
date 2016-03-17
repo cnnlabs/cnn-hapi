@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2016-03-17, Version 0.5.0, @adslaton
+
+### Notable changes
+
+- Adding cache control headers on each reply
+
+
+### Known issues
+
+See https://github.com/TurnerBroadcasting/ksa/labels/defect for complete and
+current list of known issues.
+
+
+### Commits
+
+* [[`fd2294e`](https://github.com/cnnlabs/cnn-hapi/commit/fd2294ec71adf8ceac13bc433512b4495a59dd93)] - **feature**: Adds the ability to send cache control headers on each reply (A.D. Slaton)
+
 
 ## 2016-02-23, Version 0.4.1, @jamsyoung
 
