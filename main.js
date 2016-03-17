@@ -49,6 +49,24 @@ let setupHealthCheck = function (request, reply) {
     },
     metricsProvider = {};
 
+/**
+ * Set up cache control headers
+ * @private
+ * @param {object} request - Request object
+ * @param {object} headers - The cache control headers to set
+ */
+function setCacheControlHeaders(request, headers) {
+    let surrogateControl = headers.surrogateCacheControl ? headers.surrogateCacheControl : false,
+        cacheControl = headers.cacheControlHeader ? headers.cacheControlHeader : false;
+
+    if (typeof surrogateControl === 'string') {
+        request.response.header('Surrogate-Control', surrogateControl);
+    }
+
+    if (typeof cacheControl === 'string') {
+        request.response.header('Cache-Control', cacheControl);
+    }
+}
 
 module.exports = function (options) {
     let packageJson = {},
@@ -63,12 +81,18 @@ module.exports = function (options) {
             healthChecks: []
         },
         port = process.env.PORT || options.port,
-        environment  = process.env.NODE_ENV || '',
+        environment  = process.env.NODE_ENV || process.env.ENVIRONMENT || '',
         server = new hapi.Server(),
         name = options.name,
         description = '',
         directory = options.directory || process.cwd(),
-        actualAppStart;
+        actualAppStart,
+        cacheControlHeader = process.env.CACHE_CONTROL || options.maxAge || 'max-age=60', // Default cache time is 60 seconds
+        surrogateControlHeader = process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400',
+        cacheHeaders = {
+            cacheControlHeader: cacheControlHeader,
+            surrogateCacheControl: surrogateControlHeader
+        };
 
     options = options || {};
     options = Hoek.applyToDefaults(defaults, options);
@@ -157,6 +181,14 @@ module.exports = function (options) {
         method: 'GET',
         path: '/__health/{checknumber?}',
         handler: setupHealthCheck
+    });
+
+    server.ext({
+        type: 'onPreResponse',
+        method: function (request, reply) {
+            setCacheControlHeaders(request, cacheHeaders);
+            return reply.continue();
+        }
     });
 
     actualAppStart = server.start;
