@@ -3,11 +3,7 @@
 const hapi = require('hapi'),
     Hoek = require('hoek'),
     robots = require('./lib/hapi/robots'),
-    cleanName = require('./lib/clean-name'),
-    cacheControlHeader = process.env.BROWSER_CACHE_CONTROL || 'max-age=60', // Default cache time is 60 seconds
-    surrogateControlHeader = process.env.SURROGATE_CACHE_CONTROL || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400', // Default from Fastly
-    cdnCacheControl = process.env.CDN_CACHE_CONTROL || 'max-age=2592000', // Default cache time is 30 days
-    cdnSurrogateControl = process.env.CDN_SURROGATE_CONTROL || 'max-age=2592000, stale-while-revalidate=60, stale-if-error=86400'; // Default from Fastly
+    cleanName = require('./lib/clean-name');
 
 
 require('isomorphic-fetch');
@@ -57,18 +53,18 @@ let setupHealthCheck = function (request, reply) {
  * Set up cache control headers
  * @private
  * @param {object} request - Request object
- * @param {string} cacheControlType - The cache control header to set
+ * @param {object} headers - The cache control headers to set
  */
-function getCacheControlHeaders(request, cacheControlType) {
-    switch (cacheControlType) {
-        case 'cdn':
-            request.response.header('Surrogate-Control', cdnSurrogateControl);
-            request.response.header('Cache-Control', cdnCacheControl);
-            break;
-        case 'browser':
-            request.response.header('Surrogate-Control', surrogateControlHeader);
-            request.response.header('Cache-Control', cacheControlHeader);
-            break;
+function getCacheControlHeaders(request, headers) {
+    let surrogateControl = headers.surrogateCacheControl ? headers.surrogateCacheControl : false,
+        cacheControl = headers.cacheControlHeader ? headers.cacheControlHeader : false;
+
+    if (typeof surrogateControl === 'string') {
+        request.response.header('Surrogate-Control', surrogateControl);
+    }
+
+    if (typeof cacheControl === 'string') {
+        request.response.header('Cache-Control', cacheControl);
     }
 }
 
@@ -91,7 +87,12 @@ module.exports = function (options) {
         description = '',
         directory = options.directory || process.cwd(),
         actualAppStart,
-        cacheControlType = process.env.CACHE_CONTROL_TYPE || options.cacheControlType; //cdn || browser
+        cacheControlHeader = process.env.CACHE_CONTROL || options.maxAge || 'max-age=60', // Default cache time is 60 seconds
+        surrogateControlHeader = process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400', // Default from Fastly
+        cacheHeaders = {
+            cacheControlHeader: cacheControlHeader,
+            surrogateCacheControl: surrogateControlHeader
+        };
 
     options = options || {};
     options = Hoek.applyToDefaults(defaults, options);
@@ -185,7 +186,7 @@ module.exports = function (options) {
     server.ext({
         type: 'onPreResponse',
         method: function (request, reply) {
-            getCacheControlHeaders(request, cacheControlType);
+            getCacheControlHeaders(request, cacheHeaders);
             return reply.continue();
         }
     });
