@@ -88,7 +88,7 @@ module.exports = function (options) {
         directory = options.directory || process.cwd(),
         actualAppStart,
         cacheControlHeader = process.env.CACHE_CONTROL || options.maxAge || 'max-age=60', // Default cache time is 60 seconds
-        surrogateControlHeader = process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400', // Default from Fastly
+        surrogateControlHeader = process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400',
         cacheHeaders = {
             cacheControlHeader: cacheControlHeader,
             surrogateCacheControl: surrogateControlHeader
