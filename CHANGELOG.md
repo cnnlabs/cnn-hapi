@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2016-03-18, Version 0.5.1, @adslaton
+
+### Notable changes
+
+- Adding checks around response.header
+
+
+### Known issues
+
+See https://github.com/TurnerBroadcasting/ksa/labels/defect for complete and
+current list of known issues.
+
+
+### Commits
+
+* [[`12798bb`](https://github.com/cnnlabs/cnn-hapi/commit/12798bbba66f1e5926af68cadc783b48aee25161)] - **bug**: Adding checks around response.header (A.D. Slaton)
+
 ## 2016-03-17, Version 0.5.0, @adslaton
 
 ### Notable changes
