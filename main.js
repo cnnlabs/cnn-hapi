@@ -59,12 +59,16 @@ function setCacheControlHeaders(request, headers) {
     let surrogateControl = headers.surrogateCacheControl ? headers.surrogateCacheControl : false,
         cacheControl = headers.cacheControlHeader ? headers.cacheControlHeader : false;
 
-    if (typeof surrogateControl === 'string') {
-        request.response.header('Surrogate-Control', surrogateControl);
-    }
+    if (typeof request.response === 'object' &&
+        request.response !== null &&
+        typeof request.response.header === 'function') {
+        if (typeof surrogateControl === 'string') {
+            request.response.header('Surrogate-Control', surrogateControl);
+        }
 
-    if (typeof cacheControl === 'string') {
-        request.response.header('Cache-Control', cacheControl);
+        if (typeof cacheControl === 'string') {
+            request.response.header('Cache-Control', cacheControl);
+        }
     }
 }
 
