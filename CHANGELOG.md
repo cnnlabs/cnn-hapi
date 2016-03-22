@@ -1,5 +1,23 @@
 # CNN Hapi Changelog
 
+## 2016-03-22, Version 0.5.2, @adslaton
+
+### Notable changes
+
+- Adding a check around reply.set
+
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+
+### Commits
+
+* [[`4dc4484`](https://github.com/cnnlabs/cnn-hapi/commit/4dc4484c0d8bf459a2cdc8168407cab012b8af8f)] - **bug**: Adding a check around reply.set (A.D. Slaton)
+
+
 ## 2016-03-18, Version 0.5.1, @adslaton
 
 ### Notable changes
@@ -9,7 +27,7 @@
 
 ### Known issues
 
-See https://github.com/TurnerBroadcasting/ksa/labels/defect for complete and
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
 current list of known issues.
 
 
@@ -26,7 +44,7 @@ current list of known issues.
 
 ### Known issues
 
-See https://github.com/TurnerBroadcasting/ksa/labels/defect for complete and
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
 current list of known issues.
 
 
@@ -44,7 +62,7 @@ current list of known issues.
 
 ### Known issues
 
-See https://github.com/TurnerBroadcasting/ksa/labels/defect for complete and
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
 current list of known issues.
 
 
@@ -67,7 +85,7 @@ current list of known issues.
 
 ### Known issues
 
-See https://github.com/TurnerBroadcasting/ksa/labels/defect for complete and
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
 current list of known issues.
 
 
