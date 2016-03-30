@@ -1,5 +1,24 @@
 # CNN Hapi Changelog
 
+## 2016-03-22, Version 0.5.3, @adslaton
+
+### Notable changes
+
+- Adding a check around reply.send
+
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+
+### Commits
+
+* [[`fba9d10df9`](https://github.com/cnnlabs/cnn-hapi/commit/fba9d10df9)] - Merge pull request #19 from cnnlabs/feature/issue-18 (A.D. Slaton) 
+* [[`d010552859`](https://github.com/cnnlabs/cnn-hapi/commit/d010552859)] - updating dependencies (A.D. Slaton) 
+* [[`89474b8a9b`](https://github.com/cnnlabs/cnn-hapi/commit/89474b8a9b)] - properly checking if reply.send is a function (A.D. Slaton) 
+
 ## 2016-03-22, Version 0.5.2, @adslaton
 
 ### Notable changes
