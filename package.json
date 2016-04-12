@@ -1,6 +1,6 @@
 {
   "name": "cnn-hapi",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "This is a generic Hapi server for starting projects.",
   "main": "main.js",
   "directories": {
@@ -37,7 +37,7 @@
     "good": "6.6.0",
     "handlebars": "4.0.5",
     "hapi": "13.2.2",
-    "hapi-swagger": "4.3.1",
+    "hapi-swagger": "5.0.1",
     "hoek": "3.0.4",
     "inert": "3.2.0",
     "isomorphic-fetch": "2.2.1",
