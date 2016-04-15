@@ -1,5 +1,23 @@
 # CNN Hapi Changelog
 
+## 2016-04-12, Version 0.5.4, @matthewjon
+
+### Notable changes
+
+- Bump Swagger
+
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+
+### Commits
+
+* [[`44e4e6f37a`](https://github.com/cnnlabs/cnn-hapi/commit/44e4e6f37a)] - Bump Swagger (MatthewJon)
+
+
 ## 2016-03-22, Version 0.5.3, @adslaton
 
 ### Notable changes
