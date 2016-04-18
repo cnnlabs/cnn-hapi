@@ -3,6 +3,12 @@
 Basic [Hapi](http://hapijs.com/) server with some baked in features that can be
 pulled in as a dependency of another application to extend as needed.
 
+[![build](https://img.shields.io/travis/cnnlabs/cnn-hapi/master.svg?style=flat-square)](https://travis-ci.org/cnnlabs/cnn-hapi)
+![node](https://img.shields.io/node/v/cnn-hapi.svg?style=flat-square)
+[![npm](https://img.shields.io/npm/v/cnn-hapi.svg?style=flat-square)](https://www.npmjs.com/package/cnn-hapi)
+[![npm-downloads](https://img.shields.io/npm/dm/cnn-hapi.svg?style=flat-square)](https://www.npmjs.com/package/cnn-hapi)
+[![dependency-status](https://gemnasium.com/cnnlabs/cnn-hapi.svg)](https://gemnasium.com/cnnlabs/cnn-hapi)
+
 Features include:
 
 - Swagger on /documentation
@@ -41,11 +47,3 @@ Logging to Graphite is disabled by default on non-production environments. To en
 
 You can also navigate to localhost:5000 and see a served page.  Also check out
 localhost:5000/documentation and localhost:5000/healthcheck.
-
-
-
-[![build](https://img.shields.io/travis/cnnlabs/cnn-hapi/master.svg?style=flat-square)](https://travis-ci.org/cnnlabs/cnn-hapi)
-![node](https://img.shields.io/node/v/cnn-hapi.svg?style=flat-square)
-[![npm](https://img.shields.io/npm/v/cnn-hapi.svg?style=flat-square)](https://www.npmjs.com/package/cnn-hapi)
-[![npm-downloads](https://img.shields.io/npm/dm/cnn-hapi.svg?style=flat-square)](https://www.npmjs.com/package/cnn-hapi)
-[![dependency-status](https://gemnasium.com/cnnlabs/cnn-hapi.svg)](https://gemnasium.com/cnnlabs/cnn-hapi)
