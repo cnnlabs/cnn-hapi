@@ -1,5 +1,25 @@
 # CNN Hapi Changelog
 
+## 2016-04-18, Version 0.5.5, @adslaton
+
+### Notable changes
+
+- Bump Swagger
+
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+
+### Commits
+
+* [[`2c54ddfcb9`](https://github.com/cnnlabs/cnn-hapi/commit/2c54ddfcb9)] - Merge pull request #20 from cnnlabs/feature/dependency-update (A.D. Slaton) 
+* [[`a9c746ad24`](https://github.com/cnnlabs/cnn-hapi/commit/a9c746ad24)] - Moved build flags to the top of the readme (A.D. Slaton) 
+* [[`f997e55193`](https://github.com/cnnlabs/cnn-hapi/commit/f997e55193)] - Update to the latest version of dependencies (A.D. Slaton) 
+* [[`3bc7c6a52e`](https://github.com/cnnlabs/cnn-hapi/commit/3bc7c6a52e)] - update changelog with release notes for 0.5.4 (A.D. Slaton)
+
 ## 2016-04-12, Version 0.5.4, @matthewjon
 
 ### Notable changes
