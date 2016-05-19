@@ -1,5 +1,28 @@
 # CNN Hapi Changelog
 
+## 2016-05-19, Version 0.6.0, @adslaton
+
+### Notable changes
+
+- full support for current swagger options info
+- update package deps
+
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+
+### Commits
+
+* [[`7e7b03342c`](https://github.com/cnnlabs/cnn-hapi/commit/7e7b03342c)] - Merge pull request #23 from cnnlabs/feature/dependency-update (A.D. Slaton) 
+* [[`93487fb96b`](https://github.com/cnnlabs/cnn-hapi/commit/93487fb96b)] - Merge pull request #22 from cnnlabs/swagger-version (A.D. Slaton) 
+* [[`3be32956e1`](https://github.com/cnnlabs/cnn-hapi/commit/3be32956e1)] - update package deps (A.D. Slaton) 
+* [[`46c54d42e0`](https://github.com/cnnlabs/cnn-hapi/commit/46c54d42e0)] - **swagger**: full support for current swagger options info (James Young) 
+* [[`5fe579c70c`](https://github.com/cnnlabs/cnn-hapi/commit/5fe579c70c)] - changelog update (A.D. Slaton) 
+
+
 ## 2016-04-18, Version 0.5.5, @adslaton
 
 ### Notable changes
