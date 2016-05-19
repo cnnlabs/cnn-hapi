@@ -140,13 +140,31 @@ module.exports = function (options) {
 
     if (options.withSwagger) {
         server.register(require('vision'), () => {});
+
+        let swaggerOptionsInfo = {};
+
+        swaggerOptionsInfo.title = options.name || undefined;
+        swaggerOptionsInfo.description = options.description || undefined;
+        swaggerOptionsInfo.termsOfService = options.termsOfService || undefined;
+        swaggerOptionsInfo.version = options.version || undefined;
+
+        if (options.contactName || options.contactEmail || options.contactUrl) {
+            swaggerOptionsInfo.contact = {};
+            swaggerOptionsInfo.contact.name = options.contactName || undefined;
+            swaggerOptionsInfo.contact.email = options.contactEmail || undefined;
+            swaggerOptionsInfo.contact.url = options.contactUrl || undefined;
+        }
+
+        if (options.licenseName || options.licenseUrl) {
+            swaggerOptionsInfo.license = {};
+            swaggerOptionsInfo.license.name = options.licenseName || undefined;
+            swaggerOptionsInfo.license.url = options.licenseUrl || undefined;
+        }
+
         server.register({
             register: require('hapi-swagger'),
             options: {
-                info: {
-                    title: options.name,
-                    description: options.description
-                }
+                info: swaggerOptionsInfo
             }
         });
     }
