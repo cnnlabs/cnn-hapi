@@ -11,16 +11,19 @@
 const path = require('path'),
     hapi = require('../main'), // hapi = require('cnn-hapi'),
     cnnhealth = require('cnn-health'),
-    healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck'));
+    otherChecks = require('./config/otherchecks');
+let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray();
 
+healthChecks=healthChecks.concat(otherChecks);
 let app = module.exports = hapi({
     directory: __dirname,
     port: process.env.PORT,
+    name: 'testHarness',
+    description: 'A Test Harness for building CNN-HAPI',
     withSwagger: true,
-    withNavigation: false,
-    metrics: {provider: require('cnn-metrics'), options: {flushEvery: 20 * 1000}},
+    // metrics: {provider: require('cnn-metrics'), options: {flushEvery: 20 * 1000}},
     layoutsDir: `${__dirname}/views/`,
-    healthChecks: healthChecks.asArray(),
+    healthChecks: healthChecks,
     maxAge: '10',
     surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400'
 });
@@ -36,3 +39,4 @@ app.route({
 app.start(function () {
     console.log('App Starting');
 });
+

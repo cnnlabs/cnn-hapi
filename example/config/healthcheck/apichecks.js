@@ -1,25 +1,27 @@
-'use strict';
+const debug = require('debug')('check');
 
-let returnExport =  {
-    name: 'APIs',
-    description: 'External Health used by Service',
+module.exports = {
+    name: 'json check fixture',
+    description: 'json check fixture description',
     checks: [
         {
-            name: 'PlatformAPI HealthChecks',
-            severity: 2,
-            businessImpact: 'API may not be able to serve',
-            technicalSummary: 'Tries to query the PlatformAPI endpoint',
-            panicGuide: 'Dont Know yet',
             type: 'json',
+            name: 'CNN Homepage',
             url: 'http://www.cnn.com/_healthcheck',
-            callback: (version) => version,
+            severity: 2,
+            businessImpact: 'Its a HUGE deal',
+            technicalSummary: 'god knows',
+            panicGuide: 'Don\'t Panic',
             checkResult: {
-                PASSED: 'Successful response from the  endpoint',
-                FAILED: 'Bad response from the endpoint',
-                PENDING: 'This test has not yet run'
+                PASSED: 'Version Passed',
+                FAILED: 'Version Failed',
+                PENDING: 'This check has not yet run'
+            },
+            interval: '3s',
+            callback: function (json) {
+                debug('Hello');
+                return true;
             }
         }
     ]
-};
-
-module.exports = returnExport;
+}

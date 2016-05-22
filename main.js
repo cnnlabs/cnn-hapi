@@ -3,15 +3,16 @@
 const hapi = require('hapi'),
     Hoek = require('hoek'),
     robots = require('./lib/hapi/robots'),
+    _ = require('lodash'),
     cleanName = require('./lib/clean-name');
-
 
 require('isomorphic-fetch');
 
 let setupHealthCheck = function (request, reply) {
         let payload,
             response,
-            checks = request.server.app.__healthchecks.map(function (check) {
+            returnCode= 200,
+            checks = request.server.app.__healthchecks.map((check) =>{
                 return check.getStatus();
             });
 
@@ -22,15 +23,15 @@ let setupHealthCheck = function (request, reply) {
                 severity: 3,
                 businessImpact: 'If this application encounters any problems, nobody will be alerted and it probably will not get fixed.',
                 technicalSummary: 'This app has no healthchecks set up',
-                panicGuide: 'Don\'t Panic',
+                panicGuide: 'Yes. Panic',
                 lastUpdated: new Date()
             });
         }
 
-        if (request.params[0]) {
+        if (request.params.checknumber) {
             checks.forEach(function (check) {
                 if (check.severity <= Number(request.params.checknumber) && check.ok === false) {
-                    reply.code(500);
+                    returnCode=500;
                 }
             });
         }
@@ -38,14 +39,15 @@ let setupHealthCheck = function (request, reply) {
         //response.send();
         payload = JSON.stringify({
             schemaVersion: 1,
-            name: `CNN-${request.app.__name}`,
-            description: request.app.__description,
+            name: `CNN-${request.server.app.__name}`,
+            description: request.server.app.__description,
             checks: checks
-        }, undefined, 2);
+        }, null, 2);
 
-        response = reply(payload);
+        response = reply(payload).code(returnCode);
         response.header('Cache-Control', 'private, no-cache, max-age=0');
         response.header('Content-Type', 'application/json');
+
     },
     metricsProvider = {};
 
@@ -73,6 +75,7 @@ function setCacheControlHeaders(request, headers) {
 }
 
 module.exports = function (options) {
+    options = options || {};
     let packageJson = {},
         metricOptions = {flushEvery: 6 * 1000},
         defaults = {
@@ -97,9 +100,7 @@ module.exports = function (options) {
             cacheControlHeader: cacheControlHeader,
             surrogateCacheControl: surrogateControlHeader
         };
-
-    options = options || {};
-    options = Hoek.applyToDefaults(defaults, options);
+    options = _.merge(options, defaults);
 
     server.connection({port: port});
 
@@ -121,7 +122,7 @@ module.exports = function (options) {
     server.app.__environment = environment;
     server.app.__isProduction = environment.toUpperCase() === 'PRODUCTION';
     server.app.__rootDirectory = directory;
-    server.app.__description = description;
+    server.app.__description = options.description;
     server.app.__healthchecks = options.healthChecks;
 
     try {
@@ -219,6 +220,7 @@ module.exports = function (options) {
         console.log(`Listening on  ${port}`);
         actualAppStart.apply(this, arguments);
     };
+
 
     return server;
 };

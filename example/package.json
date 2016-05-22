@@ -3,5 +3,14 @@
   "version": "0.1.0",
   "description": "This is a demo",
   "main": "app.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "PORT=8080 DEBUG=* ENVIRONMENT=dev node app.js"
+  },
+  "dependencies": {
+    "cnn-health": "github:cnnlabs/cnn-health#develop",
+    "cnn-metrics": "^0.3.9",
+    "debug": "^2.2.0",
+    "lodash": "^4.12.0"
+  }
 }
