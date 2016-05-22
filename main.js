@@ -1,7 +1,6 @@
 'use strict';
 
 const hapi = require('hapi'),
-    Hoek = require('hoek'),
     robots = require('./lib/hapi/robots'),
     _ = require('lodash'),
     cleanName = require('./lib/clean-name');
