@@ -99,8 +99,7 @@ module.exports = function (options) {
             cacheControlHeader: cacheControlHeader,
             surrogateCacheControl: surrogateControlHeader
         };
-    options = _.merge(options, defaults);
-
+    options = _.merge( defaults, options);
     server.connection({port: port});
 
     if (!name) {
