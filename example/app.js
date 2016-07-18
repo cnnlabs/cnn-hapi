@@ -12,10 +12,10 @@ const path = require('path'),
     hapi = require('../main'), // hapi = require('cnn-hapi'),
     cnnhealth = require('cnn-health'),
     otherChecks = require('./config/otherchecks');
-let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray();
+let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray(),
+    app;
 
 healthChecks = healthChecks.concat(otherChecks);
-let app;
 
 app = module.exports = hapi({
     directory: __dirname,

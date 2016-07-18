@@ -1,7 +1,6 @@
 /* global fetch */
 'use strict';
-let lastCheckOk = false,
-    lastCheckOutput = 'Waiting for check',
+let lastCheckOutput = 'Waiting for check',
     lastCheckTime,
     panicGuide = '`Don\'t panic`';
 
