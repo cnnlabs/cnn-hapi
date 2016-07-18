@@ -15,6 +15,7 @@ current list of known issues.
 
 ### Commits
 
+* [[`b9d571cc07`](https://github.com/cnnlabs/cnn-hapi/commit/b9d571cc07)] - Merge branch 'develop' of https://github.com/cnnlabs/cnn-hapi into develop (A.D. Slaton)
 * [[`db8fe43f1e`](https://github.com/cnnlabs/cnn-hapi/commit/db8fe43f1e)] - Bump and Change the priority of the options/defaults (Matthew Drooker)
 * [[`86cf57610c`](https://github.com/cnnlabs/cnn-hapi/commit/86cf57610c)] - Removed Hoek.  Not needed (Matthew Drooker)
 * [[`108a57865a`](https://github.com/cnnlabs/cnn-hapi/commit/108a57865a)] - Removed Hoek.  Not needed (Matthew Drooker)
