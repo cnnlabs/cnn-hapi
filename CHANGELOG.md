@@ -1,5 +1,23 @@
 # CNN Hapi Changelog
 
+## 2016-07-18, Version 0.6.5, @adslaton
+
+### Notable changes
+
+- update package deps
+
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`c44b855246`](https://github.com/cnnlabs/cnn-hapi/commit/c44b855246)] - Merge pull request #25 from cnnlabs/feature/update-cnn-health (A.D. Slaton)
+* [[`1eb914f199`](https://github.com/cnnlabs/cnn-hapi/commit/1eb914f199)] - resovle 2 remaing travis ci errors (A.D. Slaton)
+* [[`2c5d2c923b`](https://github.com/cnnlabs/cnn-hapi/commit/2c5d2c923b)] - bummp cnn-health to 0.1.3 and fix travis errors (A.D. Slaton)
+
 ## 2016-07-18, Version 0.6.4, @adslaton
 
 ### Notable changes
