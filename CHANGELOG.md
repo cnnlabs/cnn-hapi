@@ -1,5 +1,25 @@
 # CNN Hapi Changelog
 
+## 2016-07-18, Version 0.6.4, @adslaton
+
+### Notable changes
+
+- update package deps
+
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+
+### Commits
+
+* [[`db8fe43f1e`](https://github.com/cnnlabs/cnn-hapi/commit/db8fe43f1e)] - Bump and Change the priority of the options/defaults (Matthew Drooker)
+* [[`86cf57610c`](https://github.com/cnnlabs/cnn-hapi/commit/86cf57610c)] - Removed Hoek.  Not needed (Matthew Drooker)
+* [[`108a57865a`](https://github.com/cnnlabs/cnn-hapi/commit/108a57865a)] - Removed Hoek.  Not needed (Matthew Drooker)
+* [[`3b49766d93`](https://github.com/cnnlabs/cnn-hapi/commit/3b49766d93)] - Added Lodash, fixed the health checks (Matthew Drooker)
+
 ## 2016-05-19, Version 0.6.0, @adslaton
 
 ### Notable changes
@@ -16,11 +36,11 @@ current list of known issues.
 
 ### Commits
 
-* [[`7e7b03342c`](https://github.com/cnnlabs/cnn-hapi/commit/7e7b03342c)] - Merge pull request #23 from cnnlabs/feature/dependency-update (A.D. Slaton) 
-* [[`93487fb96b`](https://github.com/cnnlabs/cnn-hapi/commit/93487fb96b)] - Merge pull request #22 from cnnlabs/swagger-version (A.D. Slaton) 
-* [[`3be32956e1`](https://github.com/cnnlabs/cnn-hapi/commit/3be32956e1)] - update package deps (A.D. Slaton) 
-* [[`46c54d42e0`](https://github.com/cnnlabs/cnn-hapi/commit/46c54d42e0)] - **swagger**: full support for current swagger options info (James Young) 
-* [[`5fe579c70c`](https://github.com/cnnlabs/cnn-hapi/commit/5fe579c70c)] - changelog update (A.D. Slaton) 
+* [[`7e7b03342c`](https://github.com/cnnlabs/cnn-hapi/commit/7e7b03342c)] - Merge pull request #23 from cnnlabs/feature/dependency-update (A.D. Slaton)
+* [[`93487fb96b`](https://github.com/cnnlabs/cnn-hapi/commit/93487fb96b)] - Merge pull request #22 from cnnlabs/swagger-version (A.D. Slaton)
+* [[`3be32956e1`](https://github.com/cnnlabs/cnn-hapi/commit/3be32956e1)] - update package deps (A.D. Slaton)
+* [[`46c54d42e0`](https://github.com/cnnlabs/cnn-hapi/commit/46c54d42e0)] - **swagger**: full support for current swagger options info (James Young)
+* [[`5fe579c70c`](https://github.com/cnnlabs/cnn-hapi/commit/5fe579c70c)] - changelog update (A.D. Slaton)
 
 
 ## 2016-04-18, Version 0.5.5, @adslaton
@@ -38,9 +58,9 @@ current list of known issues.
 
 ### Commits
 
-* [[`2c54ddfcb9`](https://github.com/cnnlabs/cnn-hapi/commit/2c54ddfcb9)] - Merge pull request #20 from cnnlabs/feature/dependency-update (A.D. Slaton) 
-* [[`a9c746ad24`](https://github.com/cnnlabs/cnn-hapi/commit/a9c746ad24)] - Moved build flags to the top of the readme (A.D. Slaton) 
-* [[`f997e55193`](https://github.com/cnnlabs/cnn-hapi/commit/f997e55193)] - Update to the latest version of dependencies (A.D. Slaton) 
+* [[`2c54ddfcb9`](https://github.com/cnnlabs/cnn-hapi/commit/2c54ddfcb9)] - Merge pull request #20 from cnnlabs/feature/dependency-update (A.D. Slaton)
+* [[`a9c746ad24`](https://github.com/cnnlabs/cnn-hapi/commit/a9c746ad24)] - Moved build flags to the top of the readme (A.D. Slaton)
+* [[`f997e55193`](https://github.com/cnnlabs/cnn-hapi/commit/f997e55193)] - Update to the latest version of dependencies (A.D. Slaton)
 * [[`3bc7c6a52e`](https://github.com/cnnlabs/cnn-hapi/commit/3bc7c6a52e)] - update changelog with release notes for 0.5.4 (A.D. Slaton)
 
 ## 2016-04-12, Version 0.5.4, @matthewjon
@@ -76,9 +96,9 @@ current list of known issues.
 
 ### Commits
 
-* [[`fba9d10df9`](https://github.com/cnnlabs/cnn-hapi/commit/fba9d10df9)] - Merge pull request #19 from cnnlabs/feature/issue-18 (A.D. Slaton) 
-* [[`d010552859`](https://github.com/cnnlabs/cnn-hapi/commit/d010552859)] - updating dependencies (A.D. Slaton) 
-* [[`89474b8a9b`](https://github.com/cnnlabs/cnn-hapi/commit/89474b8a9b)] - properly checking if reply.send is a function (A.D. Slaton) 
+* [[`fba9d10df9`](https://github.com/cnnlabs/cnn-hapi/commit/fba9d10df9)] - Merge pull request #19 from cnnlabs/feature/issue-18 (A.D. Slaton)
+* [[`d010552859`](https://github.com/cnnlabs/cnn-hapi/commit/d010552859)] - updating dependencies (A.D. Slaton)
+* [[`89474b8a9b`](https://github.com/cnnlabs/cnn-hapi/commit/89474b8a9b)] - properly checking if reply.send is a function (A.D. Slaton)
 
 ## 2016-03-22, Version 0.5.2, @adslaton
 
