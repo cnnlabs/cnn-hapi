@@ -1,10 +1,10 @@
 /* global fetch */
 'use strict';
-let lastCheckOk = false;
+let lastCheckOk = false,
+    lastCheckOutput = 'Waiting for check',
+    lastCheckTime,
+    panicGuide = '`Don\'t panic`';
 
-let lastCheckOutput = 'Waiting for check';
-let lastCheckTime
-let panicGuide = `Don't panic`;
 const debug = require('debug')('timedcheck'),
     INTERVAL = 1000 * 3,
     statuses = {
@@ -15,7 +15,7 @@ function pingServices() {
     fetch('http://api.platform.cnn.com/health')
     .then((res) => {
         statuses.testURL = res.ok;
-        lastCheckOutput='Valid JSON was returned';
+        lastCheckOutput = 'Valid JSON was returned';
         lastCheckTime = new Date();
         lastCheckTime = lastCheckTime.toISOString();
         debug('Ping');
@@ -31,7 +31,7 @@ pingServices();
 setInterval(pingServices, INTERVAL);
 module.exports = {
     getStatus: () => ({
-        id :"api Client",
+        id: 'api Client',
         name: 'api.client.cnn.com responded successfully.',
         ok: statuses.testURL,
         businessImpact: 'Users may not see data',

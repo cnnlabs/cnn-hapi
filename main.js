@@ -10,8 +10,8 @@ require('isomorphic-fetch');
 let setupHealthCheck = function (request, reply) {
         let payload,
             response,
-            returnCode= 200,
-            checks = request.server.app.__healthchecks.map((check) =>{
+            returnCode = 200,
+            checks = request.server.app.__healthchecks.map((check) => {
                 return check.getStatus();
             });
 
@@ -30,7 +30,7 @@ let setupHealthCheck = function (request, reply) {
         if (request.params.checknumber) {
             checks.forEach(function (check) {
                 if (check.severity <= Number(request.params.checknumber) && check.ok === false) {
-                    returnCode=500;
+                    returnCode = 500;
                 }
             });
         }
@@ -120,7 +120,7 @@ module.exports = function (options) {
     server.app.__environment = environment;
     server.app.__isProduction = environment.toUpperCase() === 'PRODUCTION';
     server.app.__rootDirectory = directory;
-    server.app.__description = options.description;
+    server.app.__description = options.description || description;
     server.app.__healthchecks = options.healthChecks;
 
     try {

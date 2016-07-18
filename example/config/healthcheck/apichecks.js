@@ -20,8 +20,9 @@ module.exports = {
             interval: '3s',
             callback: function (json) {
                 debug('Hello');
+                debug(json);
                 return true;
             }
         }
     ]
-}
+};

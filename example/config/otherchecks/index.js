@@ -1,8 +1,7 @@
-const timedCheck = require('./timedchecks');
-const returnArray =[];
+const timedCheck = require('./timedchecks'),
+    returnArray = [];
 
 returnArray.push(timedCheck);
 
 
 module.exports = returnArray;
-
