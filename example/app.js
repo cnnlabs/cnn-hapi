@@ -12,10 +12,12 @@ const path = require('path'),
     hapi = require('../main'), // hapi = require('cnn-hapi'),
     cnnhealth = require('cnn-health'),
     otherChecks = require('./config/otherchecks');
-let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray();
+let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray(),
+    app;
 
-healthChecks=healthChecks.concat(otherChecks);
-let app = module.exports = hapi({
+healthChecks = healthChecks.concat(otherChecks);
+
+app = module.exports = hapi({
     directory: __dirname,
     port: process.env.PORT,
     name: 'testHarness',
@@ -39,4 +41,3 @@ app.route({
 app.start(function () {
     console.log('App Starting');
 });
-
