@@ -35,7 +35,6 @@ let setupHealthCheck = function (request, reply) {
             });
         }
 
-        //response.send();
         payload = JSON.stringify({
             schemaVersion: 1,
             name: `CNN-${request.server.app.__name}`,
@@ -94,12 +93,13 @@ module.exports = function (options) {
         directory = options.directory || process.cwd(),
         actualAppStart,
         cacheControlHeader = process.env.CACHE_CONTROL || options.maxAge || 'max-age=60', // Default cache time is 60 seconds
-        surrogateControlHeader = process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400',
+        surrogateControlHeader = process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl ||
+            'max-age=360, stale-while-revalidate=60, stale-if-error=86400',
         cacheHeaders = {
             cacheControlHeader: cacheControlHeader,
             surrogateCacheControl: surrogateControlHeader
         };
-    options = _.merge( defaults, options);
+    options = _.merge(defaults, options);
     server.connection({port: port});
 
     if (!name) {
@@ -126,7 +126,7 @@ module.exports = function (options) {
     try {
         server.app.__version = require(`${directory}/public/__about.json`).appVersion;
     } catch (e) {
-        //Its OK
+        // Its OK
     }
 
     if (options.metrics) {
@@ -134,11 +134,15 @@ module.exports = function (options) {
         metricsProvider = options.metrics.provider;
     }
 
+    /* jscs:disable */
     server.register(require('inert'), () => {});
+    /* jscs:enable*/
 
 
     if (options.withSwagger) {
+        /* jscs:disable */
         server.register(require('vision'), () => {});
+        /* jscs:enable */
 
         let swaggerOptionsInfo = {};
 
