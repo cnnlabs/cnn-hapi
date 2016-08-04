@@ -1,5 +1,23 @@
 # CNN Hapi Changelog
 
+## 2016-08-03, Version 0.7.0, @adslaton
+
+### Notable changes
+
+- adding cors support
+- add jscsrc and jshintrc
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`0a1376ea0f`](https://github.com/cnnlabs/cnn-hapi/commit/0a1376ea0f)] - Merge pull request #27 from cnnlabs/feature/cors-support (A.D. Slaton)
+* [[`a060b18b6d`](https://github.com/cnnlabs/cnn-hapi/commit/a060b18b6d)] - adding cors support (A.D. Slaton)
+* [[`f3e6435eee`](https://github.com/cnnlabs/cnn-hapi/commit/f3e6435eee)] - add jscsrc and jshintrc (A.D. Slaton)
+
 ## 2016-07-18, Version 0.6.5, @adslaton
 
 ### Notable changes
