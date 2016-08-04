@@ -98,9 +98,17 @@ module.exports = function (options) {
         cacheHeaders = {
             cacheControlHeader: cacheControlHeader,
             surrogateCacheControl: surrogateControlHeader
+        },
+        connectionOptions = {
+            port: port
         };
+
+    if (options.routes) {
+        connectionOptions.routes = options.routes;
+    }
+
     options = _.merge(defaults, options);
-    server.connection({port: port});
+    server.connection(connectionOptions);
 
     if (!name) {
         try {
