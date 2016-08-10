@@ -103,7 +103,7 @@ function setCustomHeaders(request, customHeaders) {
         for (; i < length; i++) {
             header = customHeaders[i];
             if (header.name && header.value) {
-                request.repsonse.header(header.name, header.value);
+                request.response.header(header.name, header.value);
             }
         }
     }

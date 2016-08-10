@@ -30,8 +30,8 @@ app = module.exports = hapi({
     surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
     customHeaders: [
         {
-            name: 'test-header',
-            value: 'test-header-value'
+            name: 'Connection',
+            value: 'close'
         }
     ]
 });
