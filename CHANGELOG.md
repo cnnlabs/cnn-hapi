@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2016-08-10, Version 0.8.0, @adslaton
+
+### Notable changes
+
+- update dependencies
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+
+* [[`322b7dee7a`](https://github.com/cnnlabs/cnn-hapi/commit/322b7dee7a)] - Merge pull request #28 from cnnlabs/feature/dependency-update (A.D. Slaton)
+* [[`a2f33e95f7`](https://github.com/cnnlabs/cnn-hapi/commit/a2f33e95f7)] - update deps (A.D. Slaton)
+
 ## 2016-08-03, Version 0.7.0, @adslaton
 
 ### Notable changes
