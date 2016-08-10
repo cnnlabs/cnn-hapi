@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2016-08-10, Version 0.9.0, @adslaton
+
+### Notable changes
+
+- add custom headers
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`3e8c4a7765`](https://github.com/cnnlabs/cnn-hapi/commit/3e8c4a7765)] - Merge pull request #30 from cnnlabs/feature/custom-headers (A.D. Slaton)
+* [[`0e0f156eb1`](https://github.com/cnnlabs/cnn-hapi/commit/0e0f156eb1)] - correct syntax error and correct the example app (A.D. Slaton)
+* [[`c0db0b22d2`](https://github.com/cnnlabs/cnn-hapi/commit/c0db0b22d2)] - Merge branch 'develop' of https://github.com/cnnlabs/cnn-hapi into feature/custom-headers (A.D. Slaton)
+
 ## 2016-08-10, Version 0.8.1, @adslaton
 
 ### Notable changes
