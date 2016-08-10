@@ -1,5 +1,21 @@
 # CNN Hapi Changelog
 
+## 2016-08-10, Version 0.8.1, @adslaton
+
+### Notable changes
+
+- add lodash
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`26f23e73b8`](https://github.com/cnnlabs/cnn-hapi/commit/26f23e73b8)] - Merge pull request #29 from cnnlabs/feature/dependency-update (A.D. Slaton)
+* [[`a1d531919e`](https://github.com/cnnlabs/cnn-hapi/commit/a1d531919e)] - add lodash back in (A.D. Slaton)
+
 ## 2016-08-10, Version 0.8.0, @adslaton
 
 ### Notable changes
