@@ -13,7 +13,6 @@ current list of known issues.
 
 ### Commits
 
-
 * [[`322b7dee7a`](https://github.com/cnnlabs/cnn-hapi/commit/322b7dee7a)] - Merge pull request #28 from cnnlabs/feature/dependency-update (A.D. Slaton)
 * [[`a2f33e95f7`](https://github.com/cnnlabs/cnn-hapi/commit/a2f33e95f7)] - update deps (A.D. Slaton)
 
