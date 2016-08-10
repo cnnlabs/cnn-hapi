@@ -50,6 +50,23 @@ let setupHealthCheck = function (request, reply) {
     metricsProvider = {};
 
 /**
+ * Validate that response header exists
+ * @private
+ * @param {object} request
+ */
+function hasHeaders(request) {
+    let value = false;
+
+    if (typeof request.response === 'object' &&
+        request.response !== null &&
+        typeof request.response.header === 'function') {
+        value = true;
+    }
+
+    return value;
+}
+
+/**
  * Set up cache control headers
  * @private
  * @param {object} request - Request object
@@ -59,15 +76,31 @@ function setCacheControlHeaders(request, headers) {
     let surrogateControl = headers.surrogateCacheControl ? headers.surrogateCacheControl : false,
         cacheControl = headers.cacheControlHeader ? headers.cacheControlHeader : false;
 
-    if (typeof request.response === 'object' &&
-        request.response !== null &&
-        typeof request.response.header === 'function') {
+    if (hasHeaders(request)) {
         if (typeof surrogateControl === 'string') {
             request.response.header('Surrogate-Control', surrogateControl);
         }
 
         if (typeof cacheControl === 'string') {
             request.response.header('Cache-Control', cacheControl);
+        }
+    }
+}
+
+/**
+ * Set up custom headers
+ * @private
+ * @param {object} request - Request object
+ * @param {object} customHeaders - The custome headers to set
+ */
+function setCustomHeaders(request, customHeaders) {
+    let header;
+
+    if (hasHeaders(request)) {
+        for (header in customHeaders) {
+            if (customHeaders.hasOwnProperty(header)) {
+                request.repsonse.header(header.name, header.value);
+            }
         }
     }
 }
@@ -101,7 +134,8 @@ module.exports = function (options) {
         },
         connectionOptions = {
             port: port
-        };
+        },
+        customHeaders = (options.customHeaders) ? options.customHeaders : {};
 
     if (options.routes) {
         connectionOptions.routes = options.routes;
@@ -220,6 +254,7 @@ module.exports = function (options) {
         type: 'onPreResponse',
         method: function (request, reply) {
             setCacheControlHeaders(request, cacheHeaders);
+            setCustomHeaders(request, customHeaders);
             return reply.continue();
         }
     });
