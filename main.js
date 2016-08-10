@@ -94,11 +94,15 @@ function setCacheControlHeaders(request, headers) {
  * @param {object} customHeaders - The custome headers to set
  */
 function setCustomHeaders(request, customHeaders) {
-    let header;
+    let header,
+        length,
+        i = 0;
 
     if (hasHeaders(request)) {
-        for (header in customHeaders) {
-            if (customHeaders.hasOwnProperty(header)) {
+        length = customHeaders.length;
+        for (; i < length; i++) {
+            header = customHeaders[i];
+            if (header.name && header.value) {
                 request.repsonse.header(header.name, header.value);
             }
         }
@@ -135,7 +139,7 @@ module.exports = function (options) {
         connectionOptions = {
             port: port
         },
-        customHeaders = (options.customHeaders) ? options.customHeaders : {};
+        customHeaders = (options.customHeaders) ? options.customHeaders : [];
 
     if (options.routes) {
         connectionOptions.routes = options.routes;
