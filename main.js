@@ -76,7 +76,7 @@ function setCacheControlHeaders(request, headers) {
     let surrogateControl = headers.surrogateCacheControl ? headers.surrogateCacheControl : false,
         cacheControl = headers.cacheControlHeader ? headers.cacheControlHeader : false;
 
-    if (hasHeaders(request)) {
+    if (hasHeaders(request) === true) {
         if (typeof surrogateControl === 'string') {
             request.response.header('Surrogate-Control', surrogateControl);
         }
@@ -98,7 +98,7 @@ function setCustomHeaders(request, customHeaders) {
         length,
         i = 0;
 
-    if (hasHeaders(request)) {
+    if (hasHeaders(request) === true) {
         length = customHeaders.length;
         for (; i < length; i++) {
             header = customHeaders[i];

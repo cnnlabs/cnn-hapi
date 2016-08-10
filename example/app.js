@@ -7,11 +7,11 @@
  *
  * See the comments inline for changes that would be typical in an external app
  */
-
 const path = require('path'),
     hapi = require('../main'), // hapi = require('cnn-hapi'),
     cnnhealth = require('cnn-health'),
     otherChecks = require('./config/otherchecks');
+
 let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray(),
     app;
 
@@ -27,13 +27,19 @@ app = module.exports = hapi({
     layoutsDir: `${__dirname}/views/`,
     healthChecks: healthChecks,
     maxAge: '10',
-    surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400'
+    surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
+    customHeaders: [
+        {
+            name: 'test-header',
+            value: 'test-header-value'
+        }
+    ]
 });
 
 app.route({
     method: 'GET',
     path: '/',
-    handler: function (request, reply) {
+    handler: function routeHandler(request, reply) {
         reply('Hello router');
     }
 });
