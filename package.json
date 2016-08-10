@@ -41,6 +41,7 @@
     "inert": "4.0.1",
     "isomorphic-fetch": "2.2.1",
     "joi": "9.0.4",
+    "lodash": "4.14.2",
     "socket.io": "1.4.8",
     "vision": "4.1.0"
   },
