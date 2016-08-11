@@ -109,11 +109,12 @@ function setCustomHeaders(request, customHeaders) {
     }
 }
 
-module.exports = function (options) {
-    options = options || {};
+module.exports = function (argumentOptions) {
+    argumentOptions = argumentOptions || {};
     let packageJson = {},
         metricOptions = {flushEvery: 6 * 1000},
         defaults = {
+            host: '0.0.0.0',
             port: 3000,
             withFlags: true,
             withSwagger: false,
@@ -122,6 +123,8 @@ module.exports = function (options) {
             withBackendAuthentication: true,
             healthChecks: []
         },
+        options = _.merge(defaults, argumentOptions),
+        host = process.env.HOST || options.host,
         port = process.env.PORT || options.port,
         environment  = process.env.NODE_ENV || process.env.ENVIRONMENT || '',
         server = new hapi.Server(),
@@ -137,15 +140,19 @@ module.exports = function (options) {
             surrogateCacheControl: surrogateControlHeader
         },
         connectionOptions = {
+            host: host,
             port: port
         },
         customHeaders = (options.customHeaders) ? options.customHeaders : [];
+
+    if (options.tls) {
+        connectionOptions.tls = options.tls;
+    }
 
     if (options.routes) {
         connectionOptions.routes = options.routes;
     }
 
-    options = _.merge(defaults, options);
     server.connection(connectionOptions);
 
     if (!name) {
@@ -266,7 +273,7 @@ module.exports = function (options) {
     actualAppStart = server.start;
 
     server.start = function () {
-        console.log(`Listening on  ${port}`);
+        console.log(`Server running at ${server.info.uri}`);
         actualAppStart.apply(this, arguments);
     };
 
