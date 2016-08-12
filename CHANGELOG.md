@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2016-08-12, Version 0.10.0, @samsm-turner
+
+### Notable changes
+
+- dded configuration support for host, port, and tls
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`88ddb9811f`](https://github.com/cnnlabs/cnn-hapi/commit/88ddb9811f)] - Merge pull request #31 from samsm-turner/feature/port-host-and-tls (A.D. Slaton)
+* [[`433359b586`](https://github.com/cnnlabs/cnn-hapi/commit/433359b586)] - Added configuration support for host, port, and tls (Sam Schenkman-Moore)
+* [[`55b53e508f`](https://github.com/cnnlabs/cnn-hapi/commit/55b53e508f)] - correct changelog message for 0.9.0 (A.D. Slaton)
+
 ## 2016-08-10, Version 0.9.0, @adslaton
 
 ### Notable changes
