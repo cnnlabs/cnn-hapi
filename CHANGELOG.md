@@ -1,10 +1,27 @@
 # CNN Hapi Changelog
 
+## 2016-08-18, Version 0.11.0, @adslaton
+
+### Notable changes
+
+- Explicitly setting connection state
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`cebfe1ce6f`](https://github.com/cnnlabs/cnn-hapi/commit/cebfe1ce6f)] - Merge pull request #32 from cnnlabs/feature/update-connection-options (A.D. Slaton)
+* [[`8986a9970d`](https://github.com/cnnlabs/cnn-hapi/commit/8986a9970d)] - ***Revert*** "change and explicitly setting connection state" (A.D. Slaton)
+* [[`7a0d3f33db`](https://github.com/cnnlabs/cnn-hapi/commit/7a0d3f33db)] - opening up all hapi options when setting server connections (A.D. Slaton)
+
 ## 2016-08-12, Version 0.10.0, @samsm-turner
 
 ### Notable changes
 
-- dded configuration support for host, port, and tls
+- Added configuration support for host, port, and tls
 
 ### Known issues
 
