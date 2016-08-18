@@ -124,8 +124,6 @@ module.exports = function (argumentOptions) {
             healthChecks: []
         },
         options = _.merge(defaults, argumentOptions),
-        host = process.env.HOST || options.host,
-        port = process.env.PORT || options.port,
         environment  = process.env.NODE_ENV || process.env.ENVIRONMENT || '',
         server = new hapi.Server(),
         name = options.name,
@@ -139,19 +137,12 @@ module.exports = function (argumentOptions) {
             cacheControlHeader: cacheControlHeader,
             surrogateCacheControl: surrogateControlHeader
         },
-        connectionOptions = {
-            host: host,
-            port: port
-        },
+        connectionOptions = options,
         customHeaders = (options.customHeaders) ? options.customHeaders : [];
 
-    if (options.tls) {
-        connectionOptions.tls = options.tls;
-    }
-
-    if (options.routes) {
-        connectionOptions.routes = options.routes;
-    }
+    /* Override host and port with env vars */
+    connectionOptions.host = process.env.HOST ? process.env.HOST : options.host;
+    connectionOptions.port = process.env.PORT ? process.env.PORT : options.port;
 
     server.connection(connectionOptions);
 
