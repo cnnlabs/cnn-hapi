@@ -153,6 +153,10 @@ module.exports = function (argumentOptions) {
         connectionOptions.routes = options.routes;
     }
 
+    if (options.state) {
+        connectionOptions.state = options.state;
+    }
+
     server.connection(connectionOptions);
 
     if (!name) {
