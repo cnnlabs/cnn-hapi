@@ -149,12 +149,14 @@ module.exports = function (argumentOptions) {
         connectionOptions.tls = options.tls;
     }
 
-    if (options.routes) {
-        connectionOptions.routes = options.routes;
+    if (options.connections.routes) {
+        console.log("----- received and setting a route config from calling application");
+        server.settings.connections.routes.files = options.connections.routes.files;
     }
 
-    if (options.state) {
-        connectionOptions.state = options.state;
+    if (options.connections.routes.state) {
+        console.log("----- received and setting a state config from calling application");
+        server.settings.connections.routes.state = options.connections.routes.state;
     }
 
     server.connection(connectionOptions);
