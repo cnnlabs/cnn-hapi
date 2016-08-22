@@ -153,10 +153,10 @@ module.exports = function (argumentOptions) {
         connectionOptions.routes = options.routes;
     }
 
-    if (_.get(options, "connections.routes.files", false)) {
+    if (_.get(options, 'connections.routes.files', false)) {
         server.settings.connections.routes.files = options.connections.routes.files;
     }
-    if (_.get(options, "connections.routes.state", false)) {
+    if (_.get(options, 'connections.routes.state', false)) {
         server.settings.connections.routes.state = options.connections.routes.state;
     }
 
