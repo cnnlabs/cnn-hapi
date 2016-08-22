@@ -153,8 +153,8 @@ module.exports = function (argumentOptions) {
         connectionOptions.routes = options.routes;
     }
 
-    if (options.state) {
-        connectionOptions.state = options.state;
+    if (_.get(options, 'connections', false)) {
+        server.settings.connections = options.connections;
     }
 
     server.connection(connectionOptions);
