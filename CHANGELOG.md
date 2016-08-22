@@ -1,5 +1,25 @@
 # CNN Hapi Changelog
 
+## 2016-08-22, Version 0.12.0, @randallbpotter15
+
+### Notable changes
+
+- Providing a way for route and state config to be passed
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`eac05b0de7`](https://github.com/cnnlabs/cnn-hapi/commit/eac05b0de7)] - Merge pull request #34 from cnnlabs/feature/update-server-instantiation (A.D. Slaton)
+* [[`94e60a449a`](https://github.com/cnnlabs/cnn-hapi/commit/94e60a449a)] - Simplifying object assignment (Randall Potter)
+* [[`29e1a0d235`](https://github.com/cnnlabs/cnn-hapi/commit/29e1a0d235)] - Fixing strings - must use single quotes (Randall Potter)
+* [[`16e7f789ad`](https://github.com/cnnlabs/cnn-hapi/commit/16e7f789ad)] - Adding in safe object checking for options.connections.routes.files and (Randall Potter)
+* [[`fef170a73b`](https://github.com/cnnlabs/cnn-hapi/commit/fef170a73b)] - Providing a way for route and state config to be passed (Randall Potter)
+
+
 ## 2016-08-18, Version 0.11.0, @adslaton
 
 ### Notable changes
