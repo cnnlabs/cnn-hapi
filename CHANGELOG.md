@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2016-08-22, Version 0.12.1, @adslaton
+
+### Notable changes
+
+- change check to be explicit
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`35e51dea48`](https://github.com/cnnlabs/cnn-hapi/commit/35e51dea48)] - Merge pull request #35 from cnnlabs/feature/explict-connection-check (RP)
+* [[`41c581c6e6`](https://github.com/cnnlabs/cnn-hapi/commit/41c581c6e6)] - change check to be explicit (A.D. Slaton)
+
+
 ## 2016-08-22, Version 0.12.0, @randallbpotter15
 
 ### Notable changes
