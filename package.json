@@ -35,6 +35,8 @@
     "engine.io": "1.6.11",
     "fetchres": "1.5.1",
     "good": "7.0.2",
+    "good-console": "6.1.2",
+    "good-squeeze": "4.0.0",
     "handlebars": "4.0.5",
     "hapi": "15.0.3",
     "hapi-swagger": "7.2.0",
