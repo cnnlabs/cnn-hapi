@@ -109,7 +109,7 @@ class Service extends events.EventEmitter {
     }
 
     // check debug flag
-    get isDebug () {
+    get isDebug() {
         return this.isDebug;
     }
 

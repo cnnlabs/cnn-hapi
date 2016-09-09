@@ -50,5 +50,5 @@ app.route(require('./routes'));
 
 
 app.start(function serverStart() {
-    console.log('info', 'Server running at ' + app.info.uri);
+    console.log('info', `Server running at ${app.info.uri}`);
 });
