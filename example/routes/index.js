@@ -1,5 +1,5 @@
 
-const robots = require('../../lib/hapi/robots'),
+const robots = require('../hapi/bots'),
     setupHealthCheck = require('../helpers').setupHealthCheck;
 
 exports = module.exports = [
