@@ -1,4 +1,4 @@
-exports = module.exports = {
+module.exports = {
     setupHealthCheck: (request, reply) => {
         let payload,
             response,

@@ -2,7 +2,7 @@
 const robots = require('../hapi/bots'),
     setupHealthCheck = require('../helpers').setupHealthCheck;
 
-exports = module.exports = [
+module.exports = [
     {
         method: 'GET',
         path: '/',

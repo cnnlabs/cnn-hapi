@@ -2,7 +2,7 @@
 
 const cwd = process.cwd();
 
-exports = module.exports = function (request, reply) {
+module.exports = function (request, reply) {
 
     reply.file(`${cwd}/example/views/robots.txt`)
         .type('text/plain')
