@@ -39,4 +39,4 @@ exports = module.exports = {
         response.header('Content-Type', 'application/json');
 
     }
-}
+};
