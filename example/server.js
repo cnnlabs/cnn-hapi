@@ -44,6 +44,10 @@ app.register(server.pkgRegistry, (error) => {
 });
 
 
+/* set the application routes */
+app.route(require('./routes'));
+
+
 
 app.start(function serverStart() {
     console.log('info', 'Server running at ' + app.info.uri);
