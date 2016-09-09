@@ -15,6 +15,7 @@ class Service extends events.EventEmitter {
         super();
 
         options = options || {};
+        let self = this;
 
         // set the application base path
         this.basePath  = options.basePath || process.cwd();
@@ -36,9 +37,18 @@ class Service extends events.EventEmitter {
         this.server.decorate('server', 'onemit', this.on);
         this.server.connection(this.config.connectionOptions);
 
+        this.server.ext({
+            type: 'onPreResponse',
+            method: function (req, reply) {
+                self.config.setCacheControlHeaders(req, self.config.cacheHeaders);
+                self.config.setCustomHeaders(req, self.config.customHeaders);
+                return reply.continue();
+            }
+        });
+
         this.server.app.__name = this.config.name = cleanName(this.config.name);
         this.server.app.__environment = this.config.env;
-        this.server.app.__isProduction = this.config.env.toUpperCase() === 'PRODUCTION';
+        this.server.app.__isProduction = this.config.env.toUpperCase() === this.config.envProd.toUpperCase();
         this.server.app.__rootDirectory = this.basePath;
         this.server.app.__description = this.config.description;
         this.server.app.__healthchecks = (options.healthChecks) ? options.healthChecks : [];
@@ -51,12 +61,10 @@ class Service extends events.EventEmitter {
 
         this.registry  = new Registry(this.config, this.pkg);
         this.registry.registerDefaults();
-/*
-        // check to see if we're in production
-        this._isDebug = (this._env !== options.env.prod);
+        this._isDebug = (this.config.env !== options.envProd);
+
         // set max listeners
-        this.setMaxListeners(options.events.maxListeners || 10);
-    */
+        this.setMaxListeners(this.config.maxListeners);
     }
 
     // get App
@@ -75,54 +83,6 @@ class Service extends events.EventEmitter {
     logEvent(msg) {
         this.server.emitter('log', msg);
     }
-
-
-    /**
-     * Set up cache control headers
-     * @private
-     * @param {object} request - Request object
-     * @param {object} headers - The cache control headers to set
-     */
-    setCacheControlHeaders(request, headers) {
-        let surrogateControl = headers.surrogateCacheControl ? headers.surrogateCacheControl : false,
-            cacheControl = headers.cacheControlHeader ? headers.cacheControlHeader : false;
-
-        if (typeof request.response === 'object' &&
-            request.response !== null &&
-            typeof request.response.header === 'function') {
-            if (typeof surrogateControl === 'string') {
-                request.response.header('Surrogate-Control', surrogateControl);
-            }
-
-            if (typeof cacheControl === 'string') {
-                request.response.header('Cache-Control', cacheControl);
-            }
-        }
-    }
-
-    /**
-     * Set up custom headers
-     * @private
-     * @param {object} request - Request object
-     * @param {object} customHeaders - The custome headers to set
-     */
-    setCustomHeaders(request, customHeaders) {
-        let hasHeaders = require('./lib/utilities').hasHeaders,
-            header,
-            length,
-            i = 0;
-
-        if (hasHeaders(request) === true) {
-            length = customHeaders.length;
-            for (; i < length; i++) {
-                header = customHeaders[i];
-                if (header.name && header.value) {
-                    request.response.header(header.name, header.value);
-                }
-            }
-        }
-    }
-
 
     get cwd() {
         return this.basePath;

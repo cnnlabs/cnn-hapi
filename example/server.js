@@ -17,9 +17,11 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
             value: 'close'
         }],
         description: 'A Test Harness for building CNN-HAPI',
+        envProd: 'prod',
         healthChecks: healthChecks.concat(otherChecks),
         layoutsDir: 'views',
         maxAge: '10',
+        maxListeners: 1000,
         name: 'testHarness',
         port: process.env.PORT,
         surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
@@ -40,6 +42,8 @@ app.register(server.pkgRegistry, (error) => {
         console.error(error); process.exit(1);
     }
 });
+
+
 
 app.start(function serverStart() {
     console.log('info', 'Server running at ' + app.info.uri);
