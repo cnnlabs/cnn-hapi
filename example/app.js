@@ -16,8 +16,7 @@ const path = require('path'),
 
 
 let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray(),
-    app,
-    server = hapi.instance({
+    app, server = hapi({
         basePath: __dirname,
         customHeaders: [{
             name: 'Connection',
@@ -41,18 +40,9 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
     });
 
 
-
-/* get the default state of the server */
+/* get the hapi server */
 app = server.hapi;
 
-
-
-/* load plugins registered by the core pkg */
-app.register(server.pkgRegistry, (error) => {
-    if (error) {
-        console.error(error); process.exit(1);
-    }
-});
 
 
 /* set the application routes */

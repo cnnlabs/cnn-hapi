@@ -132,4 +132,14 @@ class Service extends events.EventEmitter {
 
 }
 
-exports = module.exports = Service;
+exports = module.exports = function (options) {
+    let service = Service.instance(options);
+
+    service.hapi.register(service.pkgRegistry, (error) => {
+        if (error) {
+            console.error(error); process.exit(1);
+        }
+    });
+
+    return service;
+};
