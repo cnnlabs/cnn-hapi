@@ -29,6 +29,10 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
         layoutsDir: 'views',
         maxAge: '10',
         maxListeners: 1000,
+        metrics: {
+            provider: require('cnn-metrics'),
+            options: {flushEvery: (6 * 1000)}
+        },
         name: 'testHarness',
         port: process.env.PORT,
         surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',

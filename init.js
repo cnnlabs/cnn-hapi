@@ -121,6 +121,15 @@ class Service extends events.EventEmitter {
         return this.pkg.version;
     }
 
+    get metrics() {
+        return this.config.metrics;
+    }
+
+    get services() {
+        let provider = this.config.metrics.provider
+        return (provider !== null) ? provider.services : provider;
+    }
+
 }
 
 exports = module.exports = Service;
