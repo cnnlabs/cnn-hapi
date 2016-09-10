@@ -18,7 +18,7 @@ class Service extends events.EventEmitter {
         let self = this;
 
         // set the application base path
-        this.basePath  = options.basePath || process.cwd();
+        this.basePath  = options.basePath || options.directory || process.cwd();
 
         // get application name and version
         this.pkg       = require(`${this.basePath}/package`);
@@ -126,7 +126,7 @@ class Service extends events.EventEmitter {
     }
 
     get services() {
-        let provider = this.config.metrics.provider
+        let provider = this.config.metrics.provider;
         return (provider !== null) ? provider.services : provider;
     }
 
