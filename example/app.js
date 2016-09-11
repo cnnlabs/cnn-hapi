@@ -16,7 +16,7 @@ const path = require('path'),
 
 
 let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray(),
-    app, server = hapi({
+    app, io, server = hapi({
         basePath: __dirname,
         customHeaders: [{
             name: 'Connection',
@@ -43,6 +43,19 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
 
 /* get the hapi server */
 app = server.hapi;
+
+
+
+io = require('socket.io')(app.listener);
+
+
+
+/* listen on any event and fire socket io events */
+io.on('connection', (socket) => {
+    app.onemit('log', (data) => {
+        socket.send(data);
+    });
+});
 
 
 

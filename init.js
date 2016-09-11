@@ -61,7 +61,7 @@ class Service extends events.EventEmitter {
 
         this.registry  = new Registry(this.config, this.pkg);
         this.registry.registerDefaults();
-        this.isDebug = (this.config.env !== options.envProd);
+        this._isDebug = (this.config.env !== options.envProd);
 
         // set max listeners
         this.setMaxListeners(this.config.maxListeners);
@@ -110,7 +110,7 @@ class Service extends events.EventEmitter {
 
     // check debug flag
     get isDebug() {
-        return this.isDebug;
+        return this._isDebug;
     }
 
     get name() {
