@@ -40,6 +40,7 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
     });
 
 
+
 /* get the hapi server */
 app = server.hapi;
 
