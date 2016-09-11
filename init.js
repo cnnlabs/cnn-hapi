@@ -6,7 +6,7 @@ let cleanName   = require('./lib/helpers/clean-name'),
     Hapi        = require('hapi'),
     Registry    = require('./lib/registry');
 
-
+require('isomorphic-fetch');
 
 class Service extends events.EventEmitter {
 
@@ -65,8 +65,6 @@ class Service extends events.EventEmitter {
 
         // set max listeners
         this.setMaxListeners(this.config.maxListeners);
-
-        this.fetch = require('isomorphic-fetch');
     }
 
     // get App
