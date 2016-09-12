@@ -1,5 +1,8 @@
 /* global fetch */
 'use strict';
+
+require('isomorphic-fetch');
+
 let lastCheckOutput = 'Waiting for check',
     lastCheckTime,
     panicGuide = '`Don\'t panic`';
