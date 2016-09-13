@@ -31,5 +31,12 @@ module.exports = [
         method: 'GET',
         path: '/__health/{checknumber?}',
         handler: setupHealthCheck
+    },
+    {
+        method: 'GET',
+        path: '/__handlebarsTest',
+        handler: (request, reply) => {
+            reply.view('handlebars/index', {body: 'World!', title: 'Hello'});
+        }
     }
 ];

@@ -1,6 +1,7 @@
 'use strict';
 
 let cleanName   = require('./lib/helpers/clean-name'),
+    path        = require('path'),
     Config      = require('./lib/config'),
     events      = require('events'),
     Hapi        = require('hapi'),
@@ -133,6 +134,10 @@ class Service extends events.EventEmitter {
         return (provider !== null) ? provider.services : provider;
     }
 
+    get maxListeners() {
+        return this.getMaxListeners();
+    }
+
 }
 
 exports = module.exports = function (options) {
@@ -143,6 +148,16 @@ exports = module.exports = function (options) {
             console.error(error); process.exit(1);
         }
     });
+
+    if (service.cfg.withHandlebars) {
+        service.hapi.views({
+            engines: {html: require('handlebars')},
+            relativeTo: service.basePath,
+            path: service.cfg.layoutsDir,
+            partialsPath: `${service.cfg.layoutsDir}${path.sep}${service.cfg.partialsPath}`,
+            helpersPath: `${service.cfg.layoutsDir}${path.sep}${service.cfg.helpersPath}`
+        });
+    }
 
     return service;
 };

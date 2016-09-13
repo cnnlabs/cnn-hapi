@@ -25,6 +25,7 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
         description: 'A Test Harness for building CNN-HAPI',
         envProd: 'prod',
         healthChecks: healthChecks.concat(otherChecks),
+        helpersPath: 'handlebars/helpers',
         layoutsDir: 'views',
         maxAge: '10',
         maxListeners: 1000,
@@ -33,10 +34,12 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
             options: {flushEvery: (6 * 1000)}
         },
         name: 'testHarness',
+        partialsPath: 'handlebars/partials',
         port: process.env.PORT,
         surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
         withSwagger: true,
-        withGoodConsole: true
+        withGoodConsole: true,
+        withHandlebars: true
     });
 
 
@@ -66,4 +69,9 @@ app.route(require('./routes'));
 
 app.start(function serverStart() {
     console.log('info', `Server running at ${app.info.uri}`);
+    console.log('info', `Server name: ${server.name}`);
+    console.log('info', `Server version: ${server.version}`);
+    console.log('info', `Server maxListeners: ${server.maxListeners}`);
+    console.log('info', `Server environment: ${server.env}`);
+    console.log('info', `Server in debug mode: ${server.isDebug}`);
 });
