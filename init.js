@@ -63,8 +63,11 @@ class Service extends events.EventEmitter {
         this.registry.registerDefaults();
         this._isDebug = (this.config.env !== options.envProd);
 
-        // set max listeners
-        this.setMaxListeners(this.config.maxListeners);
+        try {
+            this.setMaxListeners(this.config.maxListeners);
+        } catch (e) {
+            // default is 10
+        }
     }
 
     // get App
