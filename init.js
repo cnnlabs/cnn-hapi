@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 let cleanName   = require('./lib/helpers/clean-name'),
     path        = require('path'),
     Config      = require('./lib/config'),
@@ -75,6 +77,22 @@ class Service extends events.EventEmitter {
     static instance(options) {
         if (Service._instance === null || Service._instance === undefined) {
             Service._instance = new Service(options);
+
+            Service._instance.hapi.register(Service._instance.pkgRegistry, (error) => {
+                if (error) {
+                    console.error(error); process.exit(1);
+                }
+            });
+
+            if (Service._instance.cfg.withHandlebars) {
+                Service._instance.hapi.views({
+                    engines: {html: require('handlebars')},
+                    relativeTo: Service._instance.basePath,
+                    path: Service._instance.cfg.layoutsDir,
+                    partialsPath: `${Service._instance.cfg.layoutsDir}${path.sep}${Service._instance.cfg.partialsPath}`,
+                    helpersPath: `${Service._instance.cfg.layoutsDir}${path.sep}${Service._instance.cfg.helpersPath}`
+                });
+            }
         }
 
         return Service._instance;
@@ -142,22 +160,5 @@ class Service extends events.EventEmitter {
 
 exports = module.exports = function (options) {
     let service = Service.instance(options);
-
-    service.hapi.register(service.pkgRegistry, (error) => {
-        if (error) {
-            console.error(error); process.exit(1);
-        }
-    });
-
-    if (service.cfg.withHandlebars) {
-        service.hapi.views({
-            engines: {html: require('handlebars')},
-            relativeTo: service.basePath,
-            path: service.cfg.layoutsDir,
-            partialsPath: `${service.cfg.layoutsDir}${path.sep}${service.cfg.partialsPath}`,
-            helpersPath: `${service.cfg.layoutsDir}${path.sep}${service.cfg.helpersPath}`
-        });
-    }
-
     return service;
 };
