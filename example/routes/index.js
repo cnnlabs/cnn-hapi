@@ -1,3 +1,6 @@
+'use strict';
+
+
 
 const robots = require('../hapi/robots'),
     setupHealthCheck = require('../helpers').setupHealthCheck;
