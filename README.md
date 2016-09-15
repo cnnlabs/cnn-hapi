@@ -37,13 +37,18 @@ following.
 
 ```shell
 $ PORT=5000 node example/app.js
-HttpResponse { buckets: {}, reporter: [Function: bound ] }
-{ app: 'hapi-demo-app', flushEvery: 6000 }
-In Metrics Plugin
-Listening on  5000
-App Starting
-Logging to Graphite is disabled by default on non-production environments. To enable is set NODE_ENV to "production". Or set DEBUGMETRICS=1 to debug metric counters
+info Server running at http://0.0.0.0:5000
+info Server name: testHarness
+info Server version: 0.1.0
+info Server maxListeners: 1000
+info Server environment: development
+info Server in debug mode: true
+160915/014027.438, [ops] memory: 65Mb, uptime (seconds): 5.705, load: [1.30322265625,1.486328125,1.5888671875]
+160915/014032.438, [ops] memory: 58Mb, uptime (seconds): 10.706, load: [1.35888671875,1.49462890625,1.5908203125]
 ```
 
-You can also navigate to localhost:5000 and see a served page.  Also check out
-localhost:5000/documentation and localhost:5000/healthcheck.
+You can also navigate to localhost:5000 and see a served page.
+
+Swagger documentation - localhost:5000/documentation
+
+Healthcheck monitoring - localhost:5000/__health
