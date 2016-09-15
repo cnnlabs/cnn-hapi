@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 /*
  * Example application that uses cnn-hapi as a dependency to provide a basic
  * Hapi server with built in features that this example doesn't need to care
@@ -8,42 +10,69 @@
  * See the comments inline for changes that would be typical in an external app
  */
 const path = require('path'),
-    hapi = require('../main'), // hapi = require('cnn-hapi'),
+    hapi = require('../init'), // hapi = require('cnn-hapi'),
     cnnhealth = require('cnn-health'),
     otherChecks = require('./config/otherchecks');
 
+
+
 let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray(),
-    app;
-
-healthChecks = healthChecks.concat(otherChecks);
-
-app = module.exports = hapi({
-    directory: __dirname,
-    port: process.env.PORT,
-    name: 'testHarness',
-    description: 'A Test Harness for building CNN-HAPI',
-    withSwagger: true,
-    // metrics: {provider: require('cnn-metrics'), options: {flushEvery: 20 * 1000}},
-    layoutsDir: `${__dirname}/views/`,
-    healthChecks: healthChecks,
-    maxAge: '10',
-    surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
-    customHeaders: [
-        {
+    app, io, server = hapi({
+        basePath: __dirname,
+        customHeaders: [{
             name: 'Connection',
             value: 'close'
-        }
-    ]
+        }],
+        description: 'A Test Harness for building CNN-HAPI',
+        envProd: 'prod',
+        healthChecks: healthChecks.concat(otherChecks),
+        helpersPath: 'handlebars/helpers',
+        layoutsDir: 'views',
+        maxAge: '10',
+        maxListeners: 1000,
+        metrics: {
+            provider: require('cnn-metrics'),
+            options: {flushEvery: (6 * 1000)}
+        },
+        name: 'testHarness',
+        partialsPath: 'handlebars/partials',
+        port: process.env.PORT,
+        surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
+        withSwagger: true,
+        withGoodConsole: true,
+        withHandlebars: true
+    });
+
+
+
+/* get the hapi server */
+app = server.hapi;
+
+
+
+io = require('socket.io')(app.listener);
+
+
+
+/* listen on any event and fire socket io events */
+io.on('connection', (socket) => {
+    app.onemit('log', (data) => {
+        socket.send(data);
+    });
 });
 
-app.route({
-    method: 'GET',
-    path: '/',
-    handler: function routeHandler(request, reply) {
-        reply('Hello router');
-    }
-});
 
-app.start(function () {
-    console.log('App Starting');
+
+/* set the application routes */
+app.route(require('./routes'));
+
+
+
+app.start(function serverStart() {
+    console.log('info', `Server running at ${app.info.uri}`);
+    console.log('info', `Server name: ${server.name}`);
+    console.log('info', `Server version: ${server.version}`);
+    console.log('info', `Server maxListeners: ${server.maxListeners}`);
+    console.log('info', `Server environment: ${server.env}`);
+    console.log('info', `Server in debug mode: ${server.isDebug}`);
 });
