@@ -1,5 +1,20 @@
 # CNN Hapi Changelog
 
+## 2016-00-14, Version 1.0.0, @adslaton
+
+### Notable changes
+
+- change check to be explicit
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+
+
 ## 2016-08-22, Version 0.12.1, @adslaton
 
 ### Notable changes

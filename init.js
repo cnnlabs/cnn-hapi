@@ -27,7 +27,7 @@ class Service extends events.EventEmitter {
         this.pkg       = require(`${this.basePath}/package`);
         this.pkg       = {description: this.pkg.description, name: this.pkg.name, version: this.pkg.version};
 
-       // set the server defaults
+        // set the server defaults
         this.config    = new Config(this.pkg, options, this.basePath);
 
         if (!this.config.name) {
@@ -158,7 +158,7 @@ class Service extends events.EventEmitter {
 
 }
 
-exports = module.exports = function (options) {
+module.exports = function (options) {
     let service = Service.instance(options);
     return service;
 };

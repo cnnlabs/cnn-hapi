@@ -81,5 +81,6 @@
     "quotmark"     : "single",
     "scope"        : false,
     "shadow"       : false,
-    "unused"       : "vars"
+    "unused"       : "vars",
+    "esversion"    : 6
 }
