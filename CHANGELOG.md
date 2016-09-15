@@ -1,10 +1,15 @@
 # CNN Hapi Changelog
 
-## 2016-00-14, Version 1.0.0, @adslaton
+## 2016-09-14, Version 1.0.0, @adslaton
 
 ### Notable changes
 
-- change check to be explicit
+- example app updates
+- removing main.js as it has been replaced with init.js
+- bkwds compatibility support w/ minor chg to the way the app is initialized
+- isomorphic-fetch available via this.fetch
+- simple socket.io setup
+- ensures registry/views are only created once
 
 ### Known issues
 
@@ -13,7 +18,38 @@ current list of known issues.
 
 ### Commits
 
-
+* [[`265587ad57`](https://github.com/cnnlabs/cnn-hapi/commit/265587ad57)] - remove strict header default and set tls to null if not defined (A.D. Slaton)
+* [[`1307e668ac`](https://github.com/cnnlabs/cnn-hapi/commit/1307e668ac)] - Merge pull request #38 from codeclout/feature/v1.0.0 (A.D. Slaton)
+* [[`8e943bd873`](https://github.com/cnnlabs/cnn-hapi/commit/8e943bd873)] - pr feedback (Brian Duckett)
+* [[`1ec4acc829`](https://github.com/cnnlabs/cnn-hapi/commit/1ec4acc829)] - pr feedback (Brian Duckett)
+* [[`f694b4ac4a`](https://github.com/cnnlabs/cnn-hapi/commit/f694b4ac4a)] - pr feedback | strict header default (Brian Duckett)
+* [[`6d9a1cfdb3`](https://github.com/cnnlabs/cnn-hapi/commit/6d9a1cfdb3)] - pr feedback updates | env vars take precedence over user defined options (Brian Duckett)
+* [[`14bb30a09a`](https://github.com/cnnlabs/cnn-hapi/commit/14bb30a09a)] - ensures registry/views are only created once (Brian Duckett)
+* [[`e4dfcc6e43`](https://github.com/cnnlabs/cnn-hapi/commit/e4dfcc6e43)] - handlebars example | config comments (Brian Duckett)
+* [[`267ad8b769`](https://github.com/cnnlabs/cnn-hapi/commit/267ad8b769)] - pr feedback update (Brian Duckett)
+* [[`d4ecbcfc04`](https://github.com/cnnlabs/cnn-hapi/commit/d4ecbcfc04)] - simple socket.io setup | bug fix (Brian Duckett)
+* [[`e3145f51e9`](https://github.com/cnnlabs/cnn-hapi/commit/e3145f51e9)] - linter fixes (Brian Duckett)
+* [[`003be78a8e`](https://github.com/cnnlabs/cnn-hapi/commit/003be78a8e)] - layout dir legacy compat | reverting iso-fetch change (Brian Duckett)
+* [[`517b9aa098`](https://github.com/cnnlabs/cnn-hapi/commit/517b9aa098)] - isomorphic-fetch available via this.fetch (Brian Duckett)
+* [[`c2b2509425`](https://github.com/cnnlabs/cnn-hapi/commit/c2b2509425)] - bkwds compatibility support w/ minor chg to the way the app is initialized | bug fixes (Brian Duckett)
+* [[`aa2ebd3933`](https://github.com/cnnlabs/cnn-hapi/commit/aa2ebd3933)] - linter fix (Brian Duckett)
+* [[`3a24766a0a`](https://github.com/cnnlabs/cnn-hapi/commit/3a24766a0a)] - metric options update (Brian Duckett)
+* [[`2b6e453807`](https://github.com/cnnlabs/cnn-hapi/commit/2b6e453807)] - readding example app comments (Brian Duckett)
+* [[`713d199821`](https://github.com/cnnlabs/cnn-hapi/commit/713d199821)] - removing duplicate function | bug fix (Brian Duckett)
+* [[`361f147a8f`](https://github.com/cnnlabs/cnn-hapi/commit/361f147a8f)] - removing exports assignment to module.exports (Brian Duckett)
+* [[`a14dc88cd4`](https://github.com/cnnlabs/cnn-hapi/commit/a14dc88cd4)] - reverting pkg bump (Brian Duckett)
+* [[`85954fa68f`](https://github.com/cnnlabs/cnn-hapi/commit/85954fa68f)] - replacing app.js with server.js (Brian Duckett)
+* [[`39d6472b4b`](https://github.com/cnnlabs/cnn-hapi/commit/39d6472b4b)] - moving env vars before options (Brian Duckett)
+* [[`d82ac81e3a`](https://github.com/cnnlabs/cnn-hapi/commit/d82ac81e3a)] - last linter fix (Brian Duckett)
+* [[`9433bd7fac`](https://github.com/cnnlabs/cnn-hapi/commit/9433bd7fac)] - linter fixes (Brian Duckett)
+* [[`13cf357300`](https://github.com/cnnlabs/cnn-hapi/commit/13cf357300)] - removing main.js as it has been replaced with init.js (Brian Duckett)
+* [[`ec2a4e604e`](https://github.com/cnnlabs/cnn-hapi/commit/ec2a4e604e)] - example app updates (Brian Duckett)
+* [[`104e6e4b9e`](https://github.com/cnnlabs/cnn-hapi/commit/104e6e4b9e)] - updating example app (Brian Duckett)
+* [[`5bcc5ce78e`](https://github.com/cnnlabs/cnn-hapi/commit/5bcc5ce78e)] - refactor wip (Brian Duckett)
+* [[`652d0c58d6`](https://github.com/cnnlabs/cnn-hapi/commit/652d0c58d6)] - cnn-hapi refactor wip (Brian Duckett)
+* [[`49ffd0393b`](https://github.com/cnnlabs/cnn-hapi/commit/49ffd0393b)] - pkg bump | authors update | .gitignore  change (Brian Duckett)
+* [[`eecd59ce48`](https://github.com/cnnlabs/cnn-hapi/commit/eecd59ce48)] - updating pkg deps including swagger since swagger > 7 supports hapi 15 (Brian Duckett)
+* [[`4c0b3800b3`](https://github.com/cnnlabs/cnn-hapi/commit/4c0b3800b3)] - update nvmrc to current node (Brian Duckett)
 
 ## 2016-08-22, Version 0.12.1, @adslaton
 
