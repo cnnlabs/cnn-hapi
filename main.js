@@ -245,12 +245,6 @@ module.exports = function (argumentOptions) {
 
     server.route({
         method: 'GET',
-        path: '/robots.txt',
-        handler: robots
-    });
-
-    server.route({
-        method: 'GET',
         path: '/__whatami',
         handler: function (request, reply) {
             reply().code(418);
