@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2016-09-16, Version 0.12.2, @adslaton
+
+### Notable changes
+
+- removing robots.txt
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`8a856594af`](https://github.com/cnnlabs/cnn-hapi/commit/8a856594af)] - Merge pull request #41 from cnnlabs/feature/0.12.2 (A.D. Slaton)
+* [[`6a2672329e`](https://github.com/cnnlabs/cnn-hapi/commit/6a2672329e)] - removing unused var (A.D. Slaton)
+* [[`e300ba9be4`](https://github.com/cnnlabs/cnn-hapi/commit/e300ba9be4)] - removing robots.txt (A.D. Slaton)
+
 ## 2016-08-22, Version 0.12.1, @adslaton
 
 ### Notable changes
