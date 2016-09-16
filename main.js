@@ -1,7 +1,6 @@
 'use strict';
 
 const hapi = require('hapi'),
-    robots = require('./lib/hapi/robots'),
     _ = require('lodash'),
     cleanName = require('./lib/clean-name');
 
@@ -242,12 +241,6 @@ module.exports = function (argumentOptions) {
             }
         });
     }
-
-    server.route({
-        method: 'GET',
-        path: '/robots.txt',
-        handler: robots
-    });
 
     server.route({
         method: 'GET',
