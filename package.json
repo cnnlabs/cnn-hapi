@@ -1,6 +1,6 @@
 {
   "name": "cnn-hapi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "This is a generic Hapi server for starting projects.",
   "main": "init.js",
   "directories": {
@@ -8,6 +8,8 @@
     "test": "./test"
   },
   "scripts": {
+    "create-release": "tools/create-release.sh",
+    "create-release-dry": "tools/create-release.sh --dry-run",
     "generate-authors": "tools/generate-authors.sh",
     "generate-changelog": "changelog-maker --group",
     "generate-docs": "rm -rf docs && esdoc -c .esdoc.json",

@@ -1,5 +1,21 @@
 # CNN Hapi Changelog
 
+## 2016-09-26, Version 1.1.0, @adslaton
+
+### Notable changes
+
+- Removes fetchres (which is not directly used) and moved isomorphic-fetch to the example app's package.json, trimming cnn-hapi's dependency tree.
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`e2f5f583ff`](https://github.com/cnnlabs/cnn-hapi/commit/e2f5f583ff)] - Merge pull request #40 from samsm-turner/chore/remove-unused-fetch-dependencies (A.D. Slaton)
+* [[`47dfdfedcc`](https://github.com/cnnlabs/cnn-hapi/commit/47dfdfedcc)] - Removes fetchres (which is not directly used) and moved isomorphic-fetch to the example app's package.json, trimming cnn-hapi's dependency tree. (Sam Schenkman-Moore)
+
 ## 2016-09-14, Version 1.0.0, @adslaton
 
 ### Notable changes
