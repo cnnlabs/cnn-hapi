@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2016-09-27, Version 1.1.1, @adslaton
+
+### Notable changes
+
+- setting defaults to empty string
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`f7b8052480`](https://github.com/cnnlabs/cnn-hapi/commit/f7b8052480)] - Merge pull request #43 from cnnlabs/feature/withhandlebars-flag (A.D. Slaton)
+* [[`162879a8b4`](https://github.com/cnnlabs/cnn-hapi/commit/162879a8b4)] - add readme to /tools (A.D. Slaton)
+* [[`2efdddb145`](https://github.com/cnnlabs/cnn-hapi/commit/2efdddb145)] - setting defaults to empty string (A.D. Slaton)
+
 ## 2016-09-26, Version 1.1.0, @adslaton
 
 ### Notable changes
