@@ -54,7 +54,6 @@
     "esdoc": "0.4.8",
     "eslint": "3.11.1",
     "jsonlint": "1.6.2",
-    "lodash": "4.16.4",
     "npm-check-updates": "2.8.7"
   },
   "keywords": [
