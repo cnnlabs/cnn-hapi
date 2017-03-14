@@ -29,16 +29,7 @@ class Service extends events.EventEmitter {
         this.server.decorate('server', 'onemit', this.on);
         this.server.connection(this.config.connectionOptions);
 
-        /* this.server.ext({
-            type: 'onPreResponse',
-            method: function (req, reply) {
-                self.config.setCacheControlHeaders(req, self.config.cacheHeaders);
-                self.config.setCustomHeaders(req, self.config.customHeaders);
-                return reply.continue();
-            }
-        }); */
-
-        this.registry  = new Registry(options, this.pkg);
+        this.registry  = new Registry(this.config, this.pkg);
         this.registry.registerDefaults();
 
         this._isDebug = this.config.settings.environment === 'production' ||
