@@ -38,7 +38,7 @@ class Service extends events.EventEmitter {
             }
         }); */
 
-        this.registry  = new Registry(options, this.config, this.pkg);
+        this.registry  = new Registry(options, this.pkg);
         this.registry.registerDefaults();
 
         this._isDebug = this.config.settings.environment === 'production' ||
