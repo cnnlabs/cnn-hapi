@@ -35,8 +35,7 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
         port: process.env.PORT,
         surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
         withSwagger: true,
-        withGoodConsole: true,
-        withHandlebars: true
+        withGoodConsole: true
     });
 
 

@@ -47,16 +47,6 @@ class Service extends events.EventEmitter {
                     console.error(error); process.exit(1);
                 }
             });
-
-            if (Service._instance.cfg.withHandlebars) {
-                Service._instance.hapi.views({
-                    engines: {html: require('handlebars')},
-                    relativeTo: Service._instance.basePath,
-                    path: Service._instance.cfg.layoutsDir,
-                    partialsPath: `${Service._instance.cfg.layoutsDir}${path.sep}${Service._instance.cfg.partialsPath}`,
-                    helpersPath: `${Service._instance.cfg.layoutsDir}${path.sep}${Service._instance.cfg.helpersPath}`
-                });
-            }
         }
 
         return Service._instance;
