@@ -1,4 +1,5 @@
 const events = require('events');
+const path = require('path');
 const Config = require('./lib/config');
 const Hapi = require('hapi');
 const Registry = require('./lib/registry');
@@ -39,8 +40,9 @@ class Service extends events.EventEmitter {
 
         this.registry  = new Registry(options, this.config, this.pkg);
         this.registry.registerDefaults();
-        this._isDebug = this.config.settings.environment === 'production';
 
+        this._isDebug = this.config.settings.environment === 'production' ||
+            this.config.settings.environment === 'prod';
         this.config.settings.maxListeners && this.setMaxListeners(this.config.settings.maxListeners);
     }
 
@@ -114,11 +116,11 @@ class Service extends events.EventEmitter {
         return this.pkg.version;
     }
 
-    /*get metrics() {
-        return this.config.metrics;
+    get metrics() {
+        return this.config.settings.metrics.provider && this.config.settings.metrics.provider.system.counts();
     }
 
-    get services() {
+    /*get services() {
         let provider = this.config.metrics.provider;
         return (provider !== null) ? provider.services : provider;
     }*/
@@ -130,6 +132,6 @@ class Service extends events.EventEmitter {
 }
 
 module.exports = function (options) {
-    let service = Service.instance(options);
+    const service = Service.instance(options);
     return service;
 };
