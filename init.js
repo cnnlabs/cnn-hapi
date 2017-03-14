@@ -1,74 +1,47 @@
-'use strict';
+const events = require('events');
+const Config = require('./lib/config');
+const Hapi = require('hapi');
+const Registry = require('./lib/registry');
 
 
-
-let cleanName   = require('./lib/helpers/clean-name'),
-    path        = require('path'),
-    Config      = require('./lib/config'),
-    events      = require('events'),
-    Hapi        = require('hapi'),
-    Registry    = require('./lib/registry');
 
 class Service extends events.EventEmitter {
-
-    constructor(options) {
-        // We must call super() in the child class to have access to the parent 'this' in a constructor
+    constructor(options = {}) {
         super();
 
-        options = options || {};
-        let self = this;
-
         // set the application base path
-        this.basePath  = options.basePath || options.directory || process.cwd();
+        this.basePath = options.basePath || process.cwd();
 
-        // get application name and version
-        this.pkg       = require(`${this.basePath}/package`);
-        this.pkg       = {description: this.pkg.description, name: this.pkg.name, version: this.pkg.version};
+         // get application name and version
+        this.pkg = require(`${this.basePath}/package`);
 
         // set the server defaults
-        this.config    = new Config(this.pkg, options, this.basePath);
+        this.config = new Config(this.pkg, options, this.basePath);
 
-        if (!this.config.name) {
+        if (!this.config.settings.name) {
             throw new Error('Please specify an application name');
         }
 
         // spin up a new Hapi server
-        this.server    = new Hapi.Server();
+        this.server = new Hapi.Server();
         this.server.decorate('server', 'emitter', this.emit);
         this.server.decorate('server', 'onemit', this.on);
         this.server.connection(this.config.connectionOptions);
 
-        this.server.ext({
+        /* this.server.ext({
             type: 'onPreResponse',
             method: function (req, reply) {
                 self.config.setCacheControlHeaders(req, self.config.cacheHeaders);
                 self.config.setCustomHeaders(req, self.config.customHeaders);
                 return reply.continue();
             }
-        });
+        }); */
 
-        this.server.app.__name = this.config.name = cleanName(this.config.name);
-        this.server.app.__environment = this.config.env;
-        this.server.app.__isProduction = this.config.env.toUpperCase() === this.config.envProd.toUpperCase();
-        this.server.app.__rootDirectory = this.basePath;
-        this.server.app.__description = this.config.description;
-        this.server.app.__healthchecks = (options.healthChecks) ? options.healthChecks : [];
-
-        try {
-            this.server.app.__version = require(`${this.basePath}/public/__about.json`).appVersion;
-        } catch (e) {
-            this.server.app.__version = this.pkg.version;
-        }
-
-        this.registry  = new Registry(this.config, this.pkg);
+        this.registry  = new Registry(options, this.config, this.pkg);
         this.registry.registerDefaults();
-        this._isDebug = (this.config.env !== options.envProd);
+        this._isDebug = this.config.settings.environment === 'production';
 
-        try {
-            this.setMaxListeners(this.config.maxListeners);
-        } catch (e) {
-            // default is 10
-        }
+        this.config.settings.maxListeners && this.setMaxListeners(this.config.settings.maxListeners);
     }
 
     // get App
@@ -112,8 +85,8 @@ class Service extends events.EventEmitter {
         return this.server;
     }
 
-    get env() {
-        return this.config.env;
+    get environment() {
+        return this.config.settings.environment;
     }
 
     get port() {
@@ -134,21 +107,21 @@ class Service extends events.EventEmitter {
     }
 
     get name() {
-        return this.config.name;
+        return this.config.settings.name;
     }
 
     get version() {
         return this.pkg.version;
     }
 
-    get metrics() {
+    /*get metrics() {
         return this.config.metrics;
     }
 
     get services() {
         let provider = this.config.metrics.provider;
         return (provider !== null) ? provider.services : provider;
-    }
+    }*/
 
     get maxListeners() {
         return this.getMaxListeners();
