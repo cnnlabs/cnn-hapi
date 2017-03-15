@@ -41,7 +41,7 @@ class Service extends events.EventEmitter {
         if (Service._instance === null || Service._instance === undefined) {
             Service._instance = new Service(options);
 
-            Service._instance.hapi.register(Service._instance.pkgRegistry, (error) => {
+            Service._instance.server.register(Service._instance.registry.bundle, (error) => {
                 if (error) {
                     console.error(error); process.exit(1);
                 }
