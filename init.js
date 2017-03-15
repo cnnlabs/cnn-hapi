@@ -1,5 +1,4 @@
 const events = require('events');
-const path = require('path');
 const Config = require('./lib/config');
 const Hapi = require('hapi');
 const Registry = require('./lib/registry');
@@ -86,7 +85,7 @@ class Service extends events.EventEmitter {
 
     // check debug flag
     get isDebug() {
-        return this._isDebug;
+        return !this._isDebug;
     }
 
     get name() {
@@ -100,11 +99,6 @@ class Service extends events.EventEmitter {
     get metrics() {
         return this.config.settings.metrics.provider && this.config.settings.metrics.provider.system.counts();
     }
-
-    /*get services() {
-        let provider = this.config.metrics.provider;
-        return (provider !== null) ? provider.services : provider;
-    }*/
 
     get maxListeners() {
         return this.getMaxListeners();

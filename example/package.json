@@ -5,7 +5,7 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=8080 DEBUG=* ENVIRONMENT=dev node app.js"
+    "start": "PORT=8080 DEBUG=* ENVIRONMENT=dev HOSTEDGRAPHITE_APIKEY=1234 node app.js"
   },
   "dependencies": {
     "cnn-health": "github:cnnlabs/cnn-health#develop",
