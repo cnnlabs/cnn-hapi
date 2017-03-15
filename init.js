@@ -102,6 +102,5 @@ class Service extends events.EventEmitter {
 }
 
 module.exports = function (options) {
-    const service = Service.instance(options);
-    return service;
+    return Service.instance(options);
 };
