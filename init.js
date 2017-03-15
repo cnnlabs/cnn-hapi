@@ -51,57 +51,52 @@ class Service extends events.EventEmitter {
         return Service._instance;
     }
 
-    set routes(routes) {
-        this.server.route(routes);
-    }
-
     logEvent(msg) {
         this.server.emitter('log', msg);
     }
 
-    get cwd() {
-        return this.basePath;
-    }
-
-    get hapi() {
-        return this.server;
-    }
-
-    get environment() {
-        return this.config.settings.environment;
-    }
-
-    get port() {
-        return this.config.port;
+    set routes(routes) {
+        this.server.route(routes);
     }
 
     get cfg() {
         return this.config;
     }
 
-    get pkgRegistry() {
-        return this.registry.bundle;
+    get cwd() {
+        return this.basePath;
     }
 
-    // check debug flag
+    get environment() {
+        return this.config.settings.environment;
+    }
+
+    get hapi() {
+        return this.server;
+    }
+
     get isDebug() {
         return !this._isDebug;
     }
 
-    get name() {
-        return this.config.settings.name;
-    }
-
-    get version() {
-        return this.pkg.version;
+    get maxListeners() {
+        return this.getMaxListeners();
     }
 
     get metrics() {
         return this.config.settings.metrics.provider && this.config.settings.metrics.provider.system.counts();
     }
 
-    get maxListeners() {
-        return this.getMaxListeners();
+    get name() {
+        return this.config.settings.name;
+    }
+
+    get port() {
+        return this.config.port;
+    }
+
+    get version() {
+        return this.pkg.version;
     }
 
 }
