@@ -1,5 +1,21 @@
 # CNN Hapi Changelog
 
+## 2016-10-13, Version 1.1.2, @adslaton
+
+### Notable changes
+
+- sets default label to dev
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`5c126bd14b`](https://github.com/cnnlabs/cnn-hapi/commit/5c126bd14b)] - Merge pull request #44 from cnnlabs/maintenance/cnn-1 (Brian Duckett)
+* [[`7da661ab70`](https://github.com/cnnlabs/cnn-hapi/commit/7da661ab70)] - sets default label to dev | pkg dep bumps (Brian Duckett)
+
 ## 2016-09-27, Version 1.1.1, @adslaton
 
 ### Notable changes
