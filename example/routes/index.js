@@ -2,8 +2,8 @@
 
 
 
-const robots = require('../hapi/robots'),
-    setupHealthCheck = require('../helpers').setupHealthCheck;
+const robots = require('../hapi/robots');
+const setupHealthCheck = require('../helpers').setupHealthCheck;
 
 module.exports = [
     {

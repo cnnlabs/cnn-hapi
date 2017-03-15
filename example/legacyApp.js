@@ -7,10 +7,10 @@
  *
  * See the comments inline for changes that would be typical in an external app
  */
-const path = require('path'),
-    hapi = require('../init'), // hapi = require('cnn-hapi'),
-    cnnhealth = require('cnn-health'),
-    otherChecks = require('./config/otherchecks');
+const path = require('path');
+const hapi = require('../init'); // hapi = require('cnn-hapi'),
+const cnnhealth = require('cnn-health');
+const otherChecks = require('./config/otherchecks');
 
 let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray(),
     app, server;
