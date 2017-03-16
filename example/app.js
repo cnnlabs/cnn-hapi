@@ -28,6 +28,7 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
         healthChecks: healthChecks.concat(otherChecks),
         helpersPath: 'handlebars/helpers',
         layoutsDir: 'views',
+        loaderIoValidationKey: process.env.LOADER_IO_VALIDATION,
         maxAge: '10',
         maxListeners: 1000,
         metrics: {

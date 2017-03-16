@@ -22,6 +22,7 @@ server = module.exports = hapi({
     port: process.env.PORT,
     name: 'testHarness',
     description: 'A Test Harness for building CNN-HAPI',
+    loaderIoValidationKey: process.env.LOADER_IO_VALIDATION,
     withSwagger: true,
     withGoodConsole: true,
     // metrics: {provider: require('cnn-metrics'), options: {flushEvery: 20 * 1000}},
