@@ -7,11 +7,11 @@ let lastCheckOutput = 'Waiting for check',
     lastCheckTime,
     panicGuide = '`Don\'t panic`';
 
-const debug = require('debug')('timedcheck'),
-    INTERVAL = 1000 * 3,
-    statuses = {
-        testURL: false
-    };
+const debug = require('debug')('timedcheck');
+const INTERVAL = 1000 * 3;
+const statuses = {
+    testURL: false
+};
 
 function pingServices() {
     fetch('http://api.platform.cnn.com/health')
