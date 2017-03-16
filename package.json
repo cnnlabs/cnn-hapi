@@ -1,6 +1,6 @@
 {
   "name": "cnn-hapi",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "This is a generic Hapi server for starting projects.",
   "main": "init.js",
   "directories": {
