@@ -26,6 +26,7 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
         description: 'A Test Harness for building CNN-HAPI',
         healthChecks: healthChecks.concat(otherChecks),
         layoutsDir: 'views',
+        loaderIoValidationKey: process.env.LOADER_IO_VALIDATION,
         maxListeners: 1000,
         metrics: {
             provider: require('cnn-metrics'),

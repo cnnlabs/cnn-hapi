@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2017-03-16, Version 1.2.0, @adslaton
+
+### Notable changes
+
+- Add loader.io plugin
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`079984947e`](https://github.com/cnnlabs/cnn-hapi/commit/079984947e)] - Merge pull request #46 from tombrake/feature/loader_io (A.D. Slaton)
+* [[`02e9c8fb8b`](https://github.com/cnnlabs/cnn-hapi/commit/02e9c8fb8b)] - linting (tom.brake)
+* [[`cc4e20970e`](https://github.com/cnnlabs/cnn-hapi/commit/cc4e20970e)] - Initial checkin for loader.io plugin (tom.brake)
+
 ## 2016-10-13, Version 1.1.2, @adslaton
 
 ### Notable changes
