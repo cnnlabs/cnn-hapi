@@ -9,10 +9,10 @@
  *
  * See the comments inline for changes that would be typical in an external app
  */
-const path = require('path'),
-    hapi = require('../init'), // hapi = require('cnn-hapi'),
-    cnnhealth = require('cnn-health'),
-    otherChecks = require('./config/otherchecks');
+const path = require('path');
+const hapi = require('../init'); // hapi = require('cnn-hapi'),
+const cnnhealth = require('cnn-health');
+const otherChecks = require('./config/otherchecks');
 
 
 
@@ -24,24 +24,19 @@ let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).as
             value: 'close'
         }],
         description: 'A Test Harness for building CNN-HAPI',
-        envProd: 'prod',
         healthChecks: healthChecks.concat(otherChecks),
-        helpersPath: 'handlebars/helpers',
         layoutsDir: 'views',
         loaderIoValidationKey: process.env.LOADER_IO_VALIDATION,
-        maxAge: '10',
         maxListeners: 1000,
         metrics: {
             provider: require('cnn-metrics'),
             options: {flushEvery: (6 * 1000)}
         },
         name: 'testHarness',
-        partialsPath: 'handlebars/partials',
         port: process.env.PORT,
         surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
         withSwagger: true,
-        withGoodConsole: true,
-        withHandlebars: true
+        withGoodConsole: true
     });
 
 
@@ -74,6 +69,7 @@ app.start(function serverStart() {
     console.log('info', `Server name: ${server.name}`);
     console.log('info', `Server version: ${server.version}`);
     console.log('info', `Server maxListeners: ${server.maxListeners}`);
-    console.log('info', `Server environment: ${server.env}`);
+    console.log('info', `Server environment: ${server.environment}`);
     console.log('info', `Server in debug mode: ${server.isDebug}`);
+    console.log('info', 'Server Metrics:', server.metrics);
 });

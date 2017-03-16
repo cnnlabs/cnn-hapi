@@ -1,5 +1,5 @@
-const timedCheck = require('./timedchecks'),
-    returnArray = [];
+const timedCheck = require('./timedchecks');
+const returnArray = [];
 
 returnArray.push(timedCheck);
 

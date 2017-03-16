@@ -5,13 +5,16 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=8080 DEBUG=* ENVIRONMENT=dev node app.js"
+    "start": "PORT=8080 DEBUG=* ENVIRONMENT=dev HOSTEDGRAPHITE_APIKEY=1234 node app.js"
   },
   "dependencies": {
     "cnn-health": "github:cnnlabs/cnn-health#develop",
-    "cnn-metrics": "^0.3.9",
-    "debug": "^2.2.0",
-    "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.12.0"
+    "cnn-metrics": "github:cnnlabs/cnn-metrics#develop",
+    "engine.io": "2.0.1",
+    "debug": "2.6.0",
+    "handlebars": "4.0.6",
+    "isomorphic-fetch": "2.2.1",
+    "lodash": "4.17.4",
+    "socket.io": "1.7.3"
   }
 }
