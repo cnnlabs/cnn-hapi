@@ -21,7 +21,7 @@ REPO_URL=""
 if $(git rev-parse --git-dir > /dev/null 2>&1;); then
     REPO_URL=$(git config --get remote.origin.url)
     # Check if this is the repo
-    if [[ "${REPO_URL}" == *"cnnlabs/cnn-hapi" ]]; then
+    if [[ "${REPO_URL}" == *"cnnlabs/cnn-hapi.git" ]]; then
         REPO_PATH=$(git rev-parse --show-toplevel)
         CURRENT_VERSION=$(grep version ${REPO_PATH}/package.json | sed -e 's/^ *//g;s/ *$//g')
     fi
