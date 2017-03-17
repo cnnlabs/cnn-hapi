@@ -6,6 +6,7 @@
 
 - hapiJS dependency updated to v16.1.0
 - release tool fix
+- moves socket.io & handlebars to example app
 
 ### Known issues
 
