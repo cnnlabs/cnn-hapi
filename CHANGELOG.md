@@ -1,5 +1,23 @@
 # CNN Hapi Changelog
 
+## 2017-03-16, Version 2.0.0, @codeclout
+
+### Notable changes
+
+- hapiJS dependency updated to v16.1.0
+- release tool fix
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`cbe3605d87`](https://github.com/cnnlabs/cnn-hapi/commit/cbe3605d87)] - release tool tweak (Brian Duckett)
+* [[`8a8752c436`](https://github.com/cnnlabs/cnn-hapi/commit/8a8752c436)] - Merge branch 'master' into develop (Brian Duckett)
+* [[`b4a972f378`](https://github.com/cnnlabs/cnn-hapi/commit/b4a972f378)] - Merge branch 'release/2.0.0' (Brian Duckett)
+
 ## 2017-03-16, Version 1.2.0, @adslaton
 
 ### Notable changes
