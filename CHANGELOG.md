@@ -1,5 +1,25 @@
 # CNN Hapi Changelog
 
+## 2017-04-07, Version 2.1.0, @adslaton
+
+### Notable changes
+
+- remove layoutsDir from being required
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`6e82a09a9d`](https://github.com/cnnlabs/cnn-hapi/commit/6e82a09a9d)] - Merge pull request #49 from cnnlabs/feature/remove-required-layoutsDir (A.D. Slaton)
+* [[`74530300a5`](https://github.com/cnnlabs/cnn-hapi/commit/74530300a5)] - Merge branch 'develop' into feature/remove-required-layoutsDir (A.D. Slaton)
+* [[`1ec1bc47f2`](https://github.com/cnnlabs/cnn-hapi/commit/1ec1bc47f2)] - remove layoutsDir from being required (A.D. Slaton)
+* [[`79d3b29f25`](https://github.com/cnnlabs/cnn-hapi/commit/79d3b29f25)] - changelog (Brian Duckett)
+* [[`19091e5d51`](https://github.com/cnnlabs/cnn-hapi/commit/19091e5d51)] - Merge branch 'master' into develop (Brian Duckett)
+* [[`9d33506051`](https://github.com/cnnlabs/cnn-hapi/commit/9d33506051)] - Merge branch 'release/2.0.3' (Brian Duckett)
+
 ## 2017-04-07, Version 2.0.3, @codeclout
 
 ### Notable changes
