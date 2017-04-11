@@ -92,7 +92,7 @@ class Service extends events.EventEmitter {
     }
 
     get port() {
-        return this.config.port;
+        return this.config.settings.port;
     }
 
     get version() {
