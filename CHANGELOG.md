@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2017-04-12, Version 2.1.1, @codeclout
+
+### Notable changes
+
+- fixes null metrics provider
+- fixes port property
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`ebd2535`](https://github.com/cnnlabs/cnn-hapi/commit/ebd2535)] - Merge branch 'master' into develop (Brian Duckett)
+* [[`fb22a71`](https://github.com/cnnlabs/cnn-hapi/commit/fb22a71)] - Merge branch 'release/2.1.1' (Brian Duckett)
+
 ## 2017-04-07, Version 2.1.0, @adslaton
 
 ### Notable changes
