@@ -84,7 +84,9 @@ class Service extends events.EventEmitter {
     }
 
     get metrics() {
-        return this.config.settings.metrics.provider && this.config.settings.metrics.provider.system.counts();
+        return (this.config.settings.metrics &&
+            this.config.settings.metrics.provider &&
+            this.config.settings.metrics.provider.system.counts()) || null;
     }
 
     get name() {
