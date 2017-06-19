@@ -1,5 +1,28 @@
 # CNN Hapi Changelog
 
+## 2017-06-19, Version 2.2.0, @adslaton
+
+### Notable changes
+
+- Update to Hapi 16.4.3
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`71920bbd25`](https://github.com/cnnlabs/cnn-hapi/commit/71920bbd25)] - Merge pull request #52 from cnnlabs/feature/hapi-16.4.3 (A.D. Slaton)
+* [[`4f4863c828`](https://github.com/cnnlabs/cnn-hapi/commit/4f4863c828)] - fix another travis failure (A.D. Slaton)
+* [[`1fdfbc55e4`](https://github.com/cnnlabs/cnn-hapi/commit/1fdfbc55e4)] - fix travis tests (A.D. Slaton)
+* [[`36f54ce44b`](https://github.com/cnnlabs/cnn-hapi/commit/36f54ce44b)] - fix travis tests (A.D. Slaton)
+* [[`2551007cb0`](https://github.com/cnnlabs/cnn-hapi/commit/2551007cb0)] - fix linting issues (A.D. Slaton)
+* [[`91d2b9dbbd`](https://github.com/cnnlabs/cnn-hapi/commit/91d2b9dbbd)] - update hapi to 16.4.3 and update other deps (A.D. Slaton)
+* [[`48836a1596`](https://github.com/cnnlabs/cnn-hapi/commit/48836a1596)] - changes logged (Brian Duckett)
+* [[`ebd2535523`](https://github.com/cnnlabs/cnn-hapi/commit/ebd2535523)] - Merge branch 'master' into develop (Brian Duckett)
+* [[`fb22a71ae6`](https://github.com/cnnlabs/cnn-hapi/commit/fb22a71ae6)] - Merge branch 'release/2.1.1' (Brian Duckett)
+
 ## 2017-04-12, Version 2.1.1, @codeclout
 
 ### Notable changes
