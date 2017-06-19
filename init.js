@@ -1,7 +1,7 @@
-const events = require('events'),
-    Config = require('./lib/config'),
-    Hapi = require('hapi'),
-    Registry = require('./lib/registry');
+const events = require('events');
+const Config = require('./lib/config');
+const Hapi = require('hapi');
+const Registry = require('./lib/registry');
 
 
 
