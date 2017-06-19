@@ -15,16 +15,16 @@ const statuses = {
 
 function pingServices() {
     fetch('http://api.platform.cnn.com/health')
-    .then((res) => {
-        statuses.testURL = res.ok;
-        lastCheckOutput = 'Valid JSON was returned';
-        lastCheckTime = new Date();
-        lastCheckTime = lastCheckTime.toISOString();
-        debug('Ping');
-    })
-    .catch(() => {
-        statuses.testURL = false;
-    });
+        .then((res) => {
+            statuses.testURL = res.ok;
+            lastCheckOutput = 'Valid JSON was returned';
+            lastCheckTime = new Date();
+            lastCheckTime = lastCheckTime.toISOString();
+            debug('Ping');
+        })
+        .catch(() => {
+            statuses.testURL = false;
+        });
 }
 
 

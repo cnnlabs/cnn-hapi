@@ -12,7 +12,7 @@ class Service extends events.EventEmitter {
         // set the application base path
         this.basePath = options.basePath || process.cwd();
 
-         // get application name and version
+        // get application name and version
         this.pkg = require(`${this.basePath}/package`);
 
         // set the server defaults
