@@ -1,7 +1,7 @@
-const events = require('events');
-const Config = require('./lib/config');
-const Hapi = require('hapi');
-const Registry = require('./lib/registry');
+const events = require('events'),
+    Config = require('./lib/config'),
+    Hapi = require('hapi'),
+    Registry = require('./lib/registry');
 
 
 
@@ -12,7 +12,7 @@ class Service extends events.EventEmitter {
         // set the application base path
         this.basePath = options.basePath || process.cwd();
 
-         // get application name and version
+        // get application name and version
         this.pkg = require(`${this.basePath}/package`);
 
         // set the server defaults

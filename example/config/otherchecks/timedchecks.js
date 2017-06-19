@@ -7,24 +7,24 @@ let lastCheckOutput = 'Waiting for check',
     lastCheckTime,
     panicGuide = '`Don\'t panic`';
 
-const debug = require('debug')('timedcheck');
-const INTERVAL = 1000 * 3;
-const statuses = {
-    testURL: false
-};
+const debug = require('debug')('timedcheck'),
+    INTERVAL = 1000 * 3,
+    statuses = {
+        testURL: false
+    };
 
 function pingServices() {
     fetch('http://api.platform.cnn.com/health')
-    .then((res) => {
-        statuses.testURL = res.ok;
-        lastCheckOutput = 'Valid JSON was returned';
-        lastCheckTime = new Date();
-        lastCheckTime = lastCheckTime.toISOString();
-        debug('Ping');
-    })
-    .catch(() => {
-        statuses.testURL = false;
-    });
+        .then((res) => {
+            statuses.testURL = res.ok;
+            lastCheckOutput = 'Valid JSON was returned';
+            lastCheckTime = new Date();
+            lastCheckTime = lastCheckTime.toISOString();
+            debug('Ping');
+        })
+        .catch(() => {
+            statuses.testURL = false;
+        });
 }
 
 
