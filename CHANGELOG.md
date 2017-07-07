@@ -1,5 +1,22 @@
 # CNN Hapi Changelog
 
+## 2017-07-07, Version 2.3.0, @adslaton
+
+### Notable changes
+
+- Add custom header check
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+* [[`16ac31235a`](https://github.com/cnnlabs/cnn-hapi/commit/16ac31235a)] - Merge pull request #53 from cnnlabs/fix/cache-headers (A.D. Slaton)
+* [[`8c57697c55`](https://github.com/cnnlabs/cnn-hapi/commit/8c57697c55)] - pr feedback: update readme (Brian Duckett)
+* [[`91664bd3c1`](https://github.com/cnnlabs/cnn-hapi/commit/91664bd3c1)] - fixes #39 (Brian Duckett)
+* [[`8c2eca6e3a`](https://github.com/cnnlabs/cnn-hapi/commit/8c2eca6e3a)] - **fix**: custom header check (Brian Duckett)
+
 ## 2017-06-19, Version 2.2.0, @adslaton
 
 ### Notable changes
