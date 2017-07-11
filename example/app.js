@@ -13,30 +13,34 @@ const path = require('path');
 const hapi = require('../init'); // hapi = require('cnn-hapi'),
 const cnnhealth = require('cnn-health');
 const otherChecks = require('./config/otherchecks');
+const services = require('./services');
 
 
 
 let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray(),
     app, io, server = hapi({
+        services,
         basePath: __dirname,
-        customHeaders: [{
-            name: 'Connection',
-            value: 'close'
-        }],
+        name: 'testHarness',
         description: 'A Test Harness for building CNN-HAPI',
-        healthChecks: healthChecks.concat(otherChecks),
-        layoutsDir: 'views',
+
+        port: process.env.PORT,
         loaderIoValidationKey: process.env.LOADER_IO_VALIDATION,
+        surrogateCacheControl: process.env.SURROGATE_CACHE_CONTROL,
+
         maxListeners: 1000,
+        withSwagger: true,
+        withGoodConsole: true,
+
+        customHeaders: [
+            {name: 'Connection', value: 'close'}
+        ],
         metrics: {
             provider: require('cnn-metrics'),
             options: {flushEvery: (6 * 1000)}
         },
-        name: 'testHarness',
-        port: process.env.PORT,
-        surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
-        withSwagger: true,
-        withGoodConsole: true
+        healthChecks: [...healthChecks, otherChecks],
+        layoutsDir: 'views'
     });
 
 

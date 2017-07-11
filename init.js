@@ -97,6 +97,10 @@ class Service extends events.EventEmitter {
         return this.config.settings.port;
     }
 
+    get healthChecks() {
+        return this.server.app.__healthchecks;
+    }
+
     get version() {
         return this.pkg.version;
     }

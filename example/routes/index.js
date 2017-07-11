@@ -3,7 +3,7 @@
 
 
 const robots = require('../hapi/robots');
-const setupHealthCheck = require('../helpers').setupHealthCheck;
+const setupHealthCheck = require('../hapi/setupHealthCheck');
 
 module.exports = [
     {
