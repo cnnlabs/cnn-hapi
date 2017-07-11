@@ -12,14 +12,17 @@ pulled in as a dependency of another application to extend as needed.
 Features include:
 
 - Swagger on /documentation
-- Healthcheck on /healthcheck
+- Basic healthcheck on /__health
 - Basic logging
 - Basic metrics
+- Basic process monitoring
+- Default Cache/Surrogate Control headers
+- Default custom headers
 
 
 ## Requirements
 
-[Node 4.2.6+](https://npmjs.org)
+[Node 6.0.0+](https://npmjs.org)
 
 
 ## Installation

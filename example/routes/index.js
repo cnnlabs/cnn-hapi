@@ -10,6 +10,19 @@ module.exports = [
         method: 'GET',
         path: '/',
         handler: (request, reply) => {
+            reply('Hello router')
+                .header('Cache-Control', 'max-age=130');
+        },
+        config: {
+            cache: {
+                privacy: 'private'
+            }
+        }
+    },
+    {
+        method: 'GET',
+        path: '/default-cache',
+        handler: (request, reply) => {
             reply('Hello router');
         }
     },
