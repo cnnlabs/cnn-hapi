@@ -16,6 +16,7 @@ Features include:
 - Basic logging
 - Basic metrics
 - Basic process monitoring
+- Basic start/stop of services
 - Default Cache/Surrogate Control headers
 - Default custom headers
 
