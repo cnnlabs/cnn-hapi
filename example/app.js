@@ -69,6 +69,9 @@ app.route(require('./routes'));
 
 
 app.start(function serverStart() {
+    process.on('SIGINT', app.stop);
+    process.on('uncaughtException', app.stop);
+
     console.log('info', `Server running at ${app.info.uri}`);
     console.log('info', `Server name: ${server.name}`);
     console.log('info', `Server version: ${server.version}`);
