@@ -24,7 +24,7 @@ class Service extends Podium {
         // spin up a new Hapi server
         this.server = new Hapi.Server();
 
-        (this.config.settings.localTLS)
+        (this.config.settings.localTLS && !this.config.settings.isProduction())
         ? this.server.connection([this.config.httpsConnection, this.config.httpConnection])
         : this.server.connection([this.config.httpConnection]);
 

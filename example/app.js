@@ -22,7 +22,6 @@ const server = hapi({
     loaderIoValidationKey: process.env.LOADER_IO_VALIDATION,
     port: process.env.PORT,
 
-    maxListeners: 1000,
     withGoodConsole: true,
     withSwagger: true,
 
@@ -33,8 +32,8 @@ const server = hapi({
         value: 'close'
     }],
     localTLS: {
-        cert: '.local/server.crt',
-        key: '.local/server.key',
+        cert: '.local/localhost.cnn.io.crt',
+        key: '.local/localhost.cnn.io.key',
         port: process.env.LOCAL_TLS_PORT
     },
     metrics: {
