@@ -60,7 +60,6 @@ app.start(function serverStart() {
     ));
     console.log('info', `Server name: ${server.name}`);
     console.log('info', `Server version: ${server.version}`);
-    console.log('info', `Server maxListeners: ${server.maxListeners}`);
     console.log('info', `Server environment: ${server.environment}`);
     console.log('info', `Server in debug mode: ${server.isDebug}`);
     console.log('info', 'Server Metrics:', server.metrics);
