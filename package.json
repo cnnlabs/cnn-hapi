@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/cnnlabs/cnn-hapi#readme",
   "engines": {
-    "node": ">=4.3.1"
+    "node": ">=8.4.0"
   },
   "dependencies": {
     "cnn-health": "0.2.0",
