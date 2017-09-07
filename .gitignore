@@ -3,3 +3,7 @@ docs
 node_modules
 npm-debug.log
 .idea
+*.rdb
+*.csr
+*.crt
+*.key
