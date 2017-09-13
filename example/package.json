@@ -10,8 +10,8 @@
   "dependencies": {
     "cnn-health": "0.2.0",
     "cnn-metrics": "github:cnnlabs/cnn-metrics#develop",
-    "debug": "2.6.3",
-    "handlebars": "4.0.6",
+    "debug": "3.0.1",
+    "handlebars": "4.0.10",
     "isomorphic-fetch": "2.2.1",
     "lodash": "4.17.4"
   }

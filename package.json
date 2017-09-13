@@ -1,6 +1,6 @@
 {
   "name": "cnn-hapi",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "This is a generic Hapi server for starting projects.",
   "main": "init.js",
   "directories": {
@@ -42,8 +42,8 @@
   },
   "devDependencies": {
     "changelog-maker": "2.2.6",
-    "esdoc": "1.0.1",
-    "eslint": "4.5.0",
+    "esdoc": "1.0.2",
+    "eslint": "4.6.1",
     "jsonlint": "1.6.2",
     "npm-check-updates": "2.12.1"
   },
