@@ -7,7 +7,7 @@ module.exports = {
         {
             type: 'json',
             name: 'CNN Homepage',
-            url: 'http://www.cnn.com/_healthcheck',
+            url: 'https://mailcar.cnn.com/_health',
             severity: 2,
             businessImpact: 'Its a HUGE deal',
             technicalSummary: 'god knows',
@@ -17,7 +17,7 @@ module.exports = {
                 FAILED: 'Version Failed',
                 PENDING: 'This check has not yet run'
             },
-            interval: '3s',
+            interval: '5s',
             callback: function (json) {
                 debug('Hello');
                 debug(json);

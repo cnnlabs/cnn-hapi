@@ -1,6 +1,6 @@
 {
   "name": "cnn-hapi-demo-app",
-  "version": "2.1.0",
+  "version": "2.4.0",
   "description": "This is a demo",
   "main": "app.js",
   "license": "MIT",
@@ -8,13 +8,11 @@
     "start": "PORT=8080 DEBUG=* ENVIRONMENT=dev HOSTEDGRAPHITE_APIKEY=1234 node app.js"
   },
   "dependencies": {
-    "cnn-health": "github:cnnlabs/cnn-health#develop",
+    "cnn-health": "0.2.0",
     "cnn-metrics": "github:cnnlabs/cnn-metrics#develop",
-    "engine.io": "3.0.0",
     "debug": "2.6.3",
     "handlebars": "4.0.6",
     "isomorphic-fetch": "2.2.1",
-    "lodash": "4.17.4",
-    "socket.io": "1.7.3"
+    "lodash": "4.17.4"
   }
 }

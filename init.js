@@ -1,14 +1,13 @@
-const events = require('events');
 const Config = require('./lib/config');
 const Hapi = require('hapi');
+const Podium = require('podium');
 const Registry = require('./lib/registry');
 
 
 
-class Service extends events.EventEmitter {
+class Service extends Podium {
     constructor(options = {}) {
         super();
-
         // set the application base path
         this.basePath = options.basePath || process.cwd();
 
@@ -24,35 +23,31 @@ class Service extends events.EventEmitter {
 
         // spin up a new Hapi server
         this.server = new Hapi.Server();
-        this.server.decorate('server', 'emitter', this.emit);
-        this.server.decorate('server', 'onemit', this.on);
-        this.server.connection(this.config.connectionOptions);
+
+        (this.config.settings.localTLS && !this.config.settings.isProduction())
+            ? this.server.connection([this.config.httpsConnection, this.config.httpConnection])
+            : this.server.connection([this.config.httpConnection]);
 
         this.registry  = new Registry(this.config, this.pkg);
         this.registry.registerDefaults();
 
-        this._isDebug = this.config.settings.environment === 'production' ||
-            this.config.settings.environment === 'prod';
-        this.config.settings.maxListeners && this.setMaxListeners(this.config.settings.maxListeners);
     }
 
     // get App
     static instance(options) {
-        if (Service._instance === null || Service._instance === undefined) {
-            Service._instance = new Service(options);
+        let  { _instance } = Service;
 
-            Service._instance.server.register(Service._instance.registry.bundle, (error) => {
+        if (_instance === null || _instance === undefined) {
+            _instance = new Service(options);
+
+            _instance.server.register(_instance.registry.bundle, (error) => {
                 if (error) {
                     console.error(error); process.exit(1);
                 }
             });
         }
 
-        return Service._instance;
-    }
-
-    logEvent(msg) {
-        this.server.emitter('log', msg);
+        return _instance;
     }
 
     set routes(routes) {
@@ -68,7 +63,8 @@ class Service extends events.EventEmitter {
     }
 
     get environment() {
-        return this.config.settings.environment;
+        const { environment } = this.config.settings;
+        return environment;
     }
 
     get hapi() {
@@ -76,29 +72,33 @@ class Service extends events.EventEmitter {
     }
 
     get isDebug() {
-        return !this._isDebug;
-    }
-
-    get maxListeners() {
-        return this.getMaxListeners();
+        const { isProduction } = this.config.settings;
+        return !isProduction();
     }
 
     get metrics() {
-        return (this.config.settings.metrics &&
-            this.config.settings.metrics.provider &&
-            this.config.settings.metrics.provider.system.counts()) || null;
+        const { metrics } = this.config.settings;
+
+        return (
+            metrics &&
+            metrics.provider &&
+            metrics.provider.system.counts()
+        ) || null;
     }
 
     get name() {
-        return this.config.settings.name;
+        const { name } = this.config.settings;
+        return name;
     }
 
     get port() {
-        return this.config.settings.port;
+        const { port } = this.config.settings;
+        return port;
     }
 
     get version() {
-        return this.pkg.version;
+        const { version } = this.pkg;
+        return version;
     }
 
 }
