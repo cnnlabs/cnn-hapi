@@ -29,7 +29,7 @@
     "node": ">=8.4.0"
   },
   "dependencies": {
-    "cnn-health": "0.2.0",
+    "cnn-health": "0.2.1",
     "cnn-metrics": "0.5.0",
     "good": "7.3.0",
     "good-console": "6.4.0",
