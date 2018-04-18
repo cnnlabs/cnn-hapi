@@ -55,3 +55,41 @@ You can also navigate to localhost:5000 and see a served page.
 Swagger documentation - `localhost:5000/documentation`
 
 Healthcheck monitoring - `localhost:5000/__health`
+
+
+## ENV VARS
+`LOADER_IO_VALIDATION`
+`PORT`
+`LOCAL_TLS_PORT`
+`CACHE_CONTROL`
+`ENVIRONMENT`
+`HOST`
+`DEFAULT_MAX_LISTENERS`
+`SURROGATE_CACHE_CONTROL`
+`SHOW_CNN_HAPI_CONFIG`  => Setting this to 'true' will show server instance configurations on `server.start()`
+`METRICS_FLUSHEVERY`
+
+## serverInstance(options)
+_options is an object that can take the following keys_
+_Populate notes are in order of priority. Example: populate: `process.env.SOMEVALUE` || `options.someValue`. In that example if `process.env.SOMEVALUE` is not set it will default to `options.someValue`, etc, etc_
+_Manual override possibilites are expressed in `options.someValue`_
+
+
+`basePath`: project basePath,
+`cacheControlHeader`: process.env.CACHE_CONTROL || 'max-age=60',
+`customHeaders`: options.customHeaders || [],
+`description`: options.description || _package.json description key_,
+`environment`: process.env.ENVIRONMENT || process.env.NODE_ENV || options.environment || '',
+`healthChecks`: options.healthChecks || [],
+`host`: process.env.HOST || options.host || '0.0.0.0',
+`loaderIoValidationKey`: options.loaderIoValidationKey || undefined,
+`localTLS`: options.localTLS || null,
+`maxListeners`: process.env.DEFAULT_MAX_LISTENERS || options.maxListeners || 10,
+`name`: options.name || `package.json name key`,
+`port`: process.env.PORT || options.port || 3000,
+`surrogateCacheControl`:
+    process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400',
+`version`:options.version || package.json version key,
+`withGoodConsole`: options.withGoodConsole || false,
+`withSwagger`: options.withSwagger || false
+

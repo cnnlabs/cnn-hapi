@@ -13,41 +13,42 @@ const cnnhealth = require('cnn-health');
 const otherChecks = require('./config/otherchecks');
 
 let healthChecks = cnnhealth(path.resolve(__dirname, './config/healthcheck')).asArray(),
-    app, server;
+  app,
+  server;
 
 healthChecks = healthChecks.concat(otherChecks);
 
 server = module.exports = hapi({
-    directory: __dirname,
-    port: process.env.PORT,
-    name: 'testHarness',
-    description: 'A Test Harness for building CNN-HAPI',
-    loaderIoValidationKey: process.env.LOADER_IO_VALIDATION,
-    withSwagger: true,
-    withGoodConsole: true,
-    // metrics: {provider: require('cnn-metrics'), options: {flushEvery: 20 * 1000}},
-    layoutsDir: `${__dirname}/views/`,
-    healthChecks: healthChecks,
-    maxAge: '10',
-    surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
-    customHeaders: [
-        {
-            name: 'Connection',
-            value: 'close'
-        }
-    ]
+  directory: __dirname,
+  port: process.env.PORT,
+  name: 'testHarness',
+  description: 'A Test Harness for building CNN-HAPI',
+  loaderIoValidationKey: process.env.LOADER_IO_VALIDATION,
+  withSwagger: true,
+  withGoodConsole: true,
+  // metrics: {provider: require('cnn-metrics'), options: {flushEvery: 20 * 1000}},
+  layoutsDir: `${__dirname}/views/`,
+  healthChecks: healthChecks,
+  maxAge: '10',
+  surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
+  customHeaders: [
+    {
+      name: 'Connection',
+      value: 'close'
+    }
+  ]
 });
 
 app = server.hapi;
 
 app.route({
-    method: 'GET',
-    path: '/',
-    handler: function routeHandler(request, reply) {
-        reply('Hello router');
-    }
+  method: 'GET',
+  path: '/',
+  handler: function routeHandler(request, reply) {
+    reply('Hello router');
+  }
 });
 
-app.start(function () {
-    console.log('App Starting');
+app.start(function() {
+  console.log('App Starting');
 });
