@@ -13,11 +13,11 @@
     "generate-authors": "tools/generate-authors.sh",
     "generate-changelog": "changelog-maker --group",
     "generate-docs": "rm -rf docs && esdoc -c .esdoc.json",
-    "test": "npm run prettier && test/validate-json-files.sh && npm run test-server",
+    "test": "npm run prettier && test/validate-json-files.sh",
     "update-apply": "ncu -u",
     "update-check": "ncu",
     "prettier": "prettier --config package.json --write --list-different \"./**/**/*.js\"",
-    "test-server": "ENVIRONMENT=test node init.js"
+    "test-server": "cd example && npm start"
   },
   "repository": {
     "type": "git",

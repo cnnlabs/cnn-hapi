@@ -25,6 +25,21 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/override-headers',
+    handler: (request, reply) => {
+      request.someArbitraryKeyThatYouSet = [
+        {name: 'x-some-header', value: 'foo'},
+        {name: 'x-another-header', value: 'baz'}
+      ];
+      reply('Peep the response headers');
+    },
+    config: {
+      description: 'Example route for demonstrating how to  override headers',
+      tags: ['api']
+    }
+  },
+  {
+    method: 'GET',
     path: '/robots.txt',
     handler: robots
   },

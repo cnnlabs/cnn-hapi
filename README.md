@@ -66,10 +66,11 @@ Healthcheck monitoring - `localhost:5000/__health`
 `HOST`
 `DEFAULT_MAX_LISTENERS`
 `SURROGATE_CACHE_CONTROL`
-`SHOW_CNN_HAPI_CONFIG`  => Setting this to 'true' will show server instance configurations on `server.start()`
+`SHOW_CNN_HAPI_CONFIG`  => Setting this to 'true' will show server instance configurations on `server.start()`. Requires `DEBUG=cnn-hapi*` to be a part of `DEBUG` capture group
 `METRICS_FLUSHEVERY`
 
 ## serverInstance(options)
+_The following options override at the server level_
 _options is an object that can take the following keys_
 _Populate notes are in order of priority. Example: populate: `process.env.SOMEVALUE` || `options.someValue`. In that example if `process.env.SOMEVALUE` is not set it will default to `options.someValue`, etc, etc_
 _Manual override possibilites are expressed in `options.someValue`_
@@ -78,18 +79,78 @@ _Manual override possibilites are expressed in `options.someValue`_
 `basePath`: project basePath,
 `cacheControlHeader`: process.env.CACHE_CONTROL || 'max-age=60',
 `customHeaders`: options.customHeaders || [],
-`description`: options.description || _package.json description key_,
+`description`: options.description || `package.json` `description` key,
 `environment`: process.env.ENVIRONMENT || process.env.NODE_ENV || options.environment || '',
 `healthChecks`: options.healthChecks || [],
 `host`: process.env.HOST || options.host || '0.0.0.0',
 `loaderIoValidationKey`: options.loaderIoValidationKey || undefined,
 `localTLS`: options.localTLS || null,
 `maxListeners`: process.env.DEFAULT_MAX_LISTENERS || options.maxListeners || 10,
-`name`: options.name || `package.json name key`,
+`name`: options.name || `package.json` `name` key,
 `port`: process.env.PORT || options.port || 3000,
 `surrogateCacheControl`:
     process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400',
-`version`:options.version || package.json version key,
+`version`:options.version || `package.json` `version` key,
 `withGoodConsole`: options.withGoodConsole || false,
 `withSwagger`: options.withSwagger || false
+
+## Override caching on individual routes
+
+### Step 1
+Wherever you are defining your `server.ext()` preferably in `server.js`...
+
+```
+const overrideCnnHapiDefaults = (request, reply) => {
+    if (!request.someArbitraryKeyThatYouSet) {
+        request.someArbitraryKeyThatYouSet = [];
+    }
+    // add override headers if they exist
+    const overrides = request.someArbitraryKeyThatYouSet;
+    try {
+        if (Array.isArray(overrides)) {
+            for (let i = 0; i < overrides.length; i++) {
+                request.response.header(overrides[i].name, overrides[i].value);
+            }
+        }
+    } catch (err) {
+        debug(err);
+    }
+    return reply.continue();
+}
+
+server.ext('onPreResponse', overrideCnnHapiDefaults);
+```
+
+
+### Step 2
+In `someRoute.js`...
+```
+
+const overrideHeaders = [
+    {
+        name: "X-SOME-HEADER",
+        value: "baz"
+    },
+    {
+        name: "X-FOO-HEADER",
+        value: "bar"
+    },
+]
+
+server.route({
+    method: 'FOO',
+    path: '/api/v1/foo/bar/{baz}',
+    handler: function (request, reply) {
+        // defined this key in STEP 1
+        request.someArbitraryKeyThatYouSet = overrideHeaders;
+        someHandler(request.params.baz, request)
+            // stuff being handled
+    .....
+
+```
+
+_For explicit usage check this implementation in `./example`_
+
+
+
 
