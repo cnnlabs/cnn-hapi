@@ -17,7 +17,7 @@
     "update-apply": "ncu -u",
     "update-check": "ncu",
     "prettier": "prettier --config package.json --write --list-different \"./**/**/*.js\"",
-    "test-server": "cd example && npm start"
+    "example-server": "cd example && npm start"
   },
   "repository": {
     "type": "git",
