@@ -31,7 +31,7 @@ module.exports = [
         {name: 'x-some-header', value: 'foo'},
         {name: 'x-another-header', value: 'baz'}
       ];
-      reply('Peep the response headers');
+      reply('Peep the response headers in swagger docs');
     },
     config: {
       description: 'Example route for demonstrating how to  override headers',
