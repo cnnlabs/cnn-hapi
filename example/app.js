@@ -16,7 +16,7 @@ const server = hapi({
 
   description: 'A Test Harness for building CNN-HAPI',
   name: 'testHarness',
-  surrogateCacheControl: 'max-age=60, stale-while-revalidate=10, stale-if-error=6400',
+  surrogateCacheControl: 'max-age=66, stale-while-revalidate=10, stale-if-error=6400',
 
   loaderIoValidationKey: process.env.LOADER_IO_VALIDATION,
   port: process.env.PORT,
