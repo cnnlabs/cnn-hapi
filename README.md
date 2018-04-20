@@ -119,5 +119,9 @@ _Using the reply.header() function can set headers on a singular route_
 _For explicit usage check this implementation in `./example/routes`_
 
 
+# Test
 
+`$ npm run example-server`
+
+It runs example server located in `./example`. Pass in ENV vars through the above command or hardcode into the package.json located in the directory.
 
