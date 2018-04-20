@@ -33,16 +33,12 @@ module.exports = [
     method: 'GET',
     path: '/override-headers',
     handler: (request, reply) => {
-      request.someArbitraryKeyThatYouSet = [
-        {name: 'x-some-header', value: 'foo'},
-        {name: 'x-another-header', value: 'baz'}
-      ];
       reply('Peep the response headers in swagger docs')
-      .header('Cache-Control', '2')
-      .header('Surrogate-Control', 'poop');
+        .header('Cache-Control', '2')
+        .header('Surrogate-Control', 'poop');
     },
     config: {
-      description: 'Example route for demonstrating how to  override headers',
+      description: 'Example route for demonstrating how to  override headers by route',
       tags: ['api']
     }
   },

@@ -6,7 +6,6 @@ const Registry = require('./lib/registry');
 class Service extends Podium {
   constructor(options = {}) {
     super();
-    console.log('server', options);
     // set the application base path
     this.basePath = options.basePath || process.cwd();
 
@@ -15,7 +14,6 @@ class Service extends Podium {
 
     // set the server defaults
     this.config = new Config(this.pkg, options, this.basePath);
-    console.log('config', this.config);
 
     if (!this.config.settings.name) {
       throw new Error('Please specify an application name');

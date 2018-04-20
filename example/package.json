@@ -5,7 +5,7 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start": "DEBUG=* ENVIRONMENT=dev SHOW_CNN_HAPI_CONFIG=true HOSTEDGRAPHITE_APIKEY=1234 node app.js"
+    "start": "DEBUG=cnn-hapi* ENVIRONMENT=dev SHOW_CNN_HAPI_CONFIG=true HOSTEDGRAPHITE_APIKEY=1234 node app.js"
   },
   "dependencies": {
     "cnn-health": "0.2.0",

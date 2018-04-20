@@ -44,31 +44,11 @@ const server = hapi({
   }
 });
 
-const overrideCnnHapiDefaults = (request, reply) => {
-  if (!request.someArbitraryKeyThatYouSet) {
-    request.someArbitraryKeyThatYouSet = [];
-  }
-  // add override headers if they exist
-  const overrides = request.someArbitraryKeyThatYouSet;
-  try {
-    if (Array.isArray(overrides)) {
-      for (let i = 0; i < overrides.length; i++) {
-        request.response.header(overrides[i].name, overrides[i].value);
-      }
-    }
-  } catch (err) {
-    debug(err);
-  }
-  return reply.continue();
-};
-
 /* get the hapi server */
 const app = server.hapi;
 
 /* set the application routes */
 app.route(require('./routes'));
-
-app.ext('onPreResponse', overrideCnnHapiDefaults);
 
 app.start(function serverStart() {
   app.connections.length &&

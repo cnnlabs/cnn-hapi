@@ -56,6 +56,10 @@ Swagger documentation - `localhost:5000/documentation`
 
 Healthcheck monitoring - `localhost:5000/__health`
 
+## Testing
+`$ cd <cnn-hapi-root>`
+`$ npm run example-server`
+This will run the example server in the `./example` directory.
 
 ## ENV VARS
 `LOADER_IO_VALIDATION`
@@ -70,11 +74,11 @@ Healthcheck monitoring - `localhost:5000/__health`
 `METRICS_FLUSHEVERY`
 
 ## serverInstance(options)
-_The following options override at the server level_
-_options is an object that can take the following keys_
+_The following options set defaults at the server level and can override CNN-Hapi Defaults_
 _Populate notes are in order of priority. Example: populate: `process.env.SOMEVALUE` || `options.someValue`. In that example if `process.env.SOMEVALUE` is not set it will default to `options.someValue`, etc, etc_
 _Manual override possibilites are expressed in `options.someValue`_
 
+_`options` is an object that can take the following keys_
 
 `basePath`: project basePath,
 `cacheControlHeader`: process.env.CACHE_CONTROL || 'max-age=60',
@@ -95,61 +99,24 @@ _Manual override possibilites are expressed in `options.someValue`_
 `withSwagger`: options.withSwagger || false
 
 ## Override caching on individual routes
-
-### Step 1
-Wherever you are defining your `server.ext()` preferably in `server.js`...
+_Using the reply.header() function can set headers on a singular route_
 
 ```
-const overrideCnnHapiDefaults = (request, reply) => {
-    if (!request.someArbitraryKeyThatYouSet) {
-        request.someArbitraryKeyThatYouSet = [];
-    }
-    // add override headers if they exist
-    const overrides = request.someArbitraryKeyThatYouSet;
-    try {
-        if (Array.isArray(overrides)) {
-            for (let i = 0; i < overrides.length; i++) {
-                request.response.header(overrides[i].name, overrides[i].value);
-            }
-        }
-    } catch (err) {
-        debug(err);
-    }
-    return reply.continue();
-}
-
-server.ext('onPreResponse', overrideCnnHapiDefaults);
-```
-
-
-### Step 2
-In `someRoute.js`...
-```
-
-const overrideHeaders = [
-    {
-        name: "X-SOME-HEADER",
-        value: "baz"
+{
+    method: 'GET',
+    path: '/override-headers',
+    handler: (request, reply) => {
+      reply('Peep the response headers in swagger docs')
+      .header('Cache-Control', '2')
+      .header('Surrogate-Control', 'baz');
     },
-    {
-        name: "X-FOO-HEADER",
-        value: "bar"
-    },
-]
-
-server.route({
-    method: 'FOO',
-    path: '/api/v1/foo/bar/{baz}',
-    handler: function (request, reply) {
-        // defined this key in STEP 1
-        request.someArbitraryKeyThatYouSet = overrideHeaders;
-        someHandler(request.params.baz, request)
-            // stuff being handled
-    .....
-
-```
-
-_For explicit usage check this implementation in `./example`_
+    config: {
+      description: 'Example route for demonstrating how to  override headers by route',
+      tags: ['api']
+    }
+  },
+  ```
+_For explicit usage check this implementation in `./example/routes`_
 
 
 
