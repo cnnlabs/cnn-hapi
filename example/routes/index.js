@@ -35,7 +35,7 @@ module.exports = [
     handler: (request, reply) => {
       reply('Peep the response headers in swagger docs')
         .header('Cache-Control', '2')
-        .header('Surrogate-Control', 'poop');
+        .header('Surrogate-Control', 'baz');
     },
     config: {
       description: 'Example route for demonstrating how to  override headers by route',
