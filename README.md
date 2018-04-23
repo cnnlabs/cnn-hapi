@@ -148,5 +148,7 @@ _For explicit usage check this implementation in `./example/routes`_
 
 `$ npm run example-server`
 
-It runs example server located in `./example`. Pass in ENV vars through the above command or hardcode into the package.json located in the directory.
+It runs example server located in `./example`. Pass in ENV vars through the above command or hardcode into the package.json located in the `./example` directory.
+
+Go to {HOST}:{PORT}/documentation to view the new swagger docs and to test current `CNN-Hapi` logic.
 
