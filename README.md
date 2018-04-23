@@ -81,21 +81,36 @@ _Manual override possibilites are expressed in `options.someValue`_
 _`options` is an object that can take the following keys_
 
 + `basePath`: project basePath,
+
 + `cacheControlHeader`: process.env.CACHE_CONTROL || 'max-age=60',
+
 + `customHeaders`: options.customHeaders || [],
+
 + `description`: options.description || `package.json` `description` key,
+
 + `environment`: process.env.ENVIRONMENT || process.env.NODE_ENV || options.environment || '',
+
 + `healthChecks`: options.healthChecks || [],
+
 + `host`: process.env.HOST || options.host || '0.0.0.0',
+
 + `loaderIoValidationKey`: options.loaderIoValidationKey || undefined,
+
 + `localTLS`: options.localTLS || null,
+
 + `maxListeners`: process.env.DEFAULT_MAX_LISTENERS || options.maxListeners || 10,
+
 + `name`: options.name || `package.json` `name` key,
+
 + `port`: process.env.PORT || options.port || 3000,
+
 + `surrogateCacheControl`:
     process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400',
+
 + `version`:options.version || `package.json` `version` key,
+
 + `withGoodConsole`: options.withGoodConsole || false,
+
 + `withSwagger`: options.withSwagger || false
 
 ## Override caching on individual routes
