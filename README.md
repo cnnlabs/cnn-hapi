@@ -63,15 +63,25 @@ This will run the example server in the `./example` directory.
 
 ## ENV VARS
 `LOADER_IO_VALIDATION`
+
 `PORT`
+
 `LOCAL_TLS_PORT`
+
 `CACHE_CONTROL`
+
 `ENVIRONMENT`
+
 `HOST`
+
 `DEFAULT_MAX_LISTENERS`
+
 `SURROGATE_CACHE_CONTROL`
+
 `SHOW_CNN_HAPI_CONFIG`  => Setting this to 'true' will show server instance configurations on `server.start()`. Requires `DEBUG=cnn-hapi*` to be a part of `DEBUG` capture group
+
 `METRICS_FLUSHEVERY`
+
 
 ## serverInstance(options)
 _The following options set defaults at the server level and can override CNN-Hapi Defaults_
