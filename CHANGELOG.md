@@ -1,5 +1,26 @@
 # CNN Hapi Changelog
 
+## 2017-08-23, Version 2.5.0, @jennyvallon
+
+### Notable changes
+
+- Add swagger docs
+- bug fix: ENV var, server(options), default heirarchy
+- bug fix: using reply.header(obj) on `surrogate-control` header
+- Add documentation on ENV vars, options and overrides by route implementation
+- Add prettier
+- ENV var to expose server configs for end user's server instance
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hapi/labels/defect for complete and
+current list of known issues.
+
+### Commits
+* [[`f72a3cbdf7`](https://github.com/cnnlabs/cnn-hapi/commit/f72a3cbdf7)] - Merge pull request #62 from cnnlabs/updateDocumentation (Jenny Vallon)
+* [[`c647c6e927`](https://github.com/cnnlabs/cnn-hapi/commit/c647c6e927)] - Merge branch 'master' into develop (Brian Duckett)
+* [[`7560b9268c`](https://github.com/cnnlabs/cnn-hapi/commit/7560b9268c)] - Merge branch 'release/2.4.3' (Brian Duckett)
+
 ## 2017-07-07, Version 2.3.0, @adslaton
 
 ### Notable changes
