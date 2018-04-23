@@ -62,25 +62,25 @@ Healthcheck monitoring - `localhost:5000/__health`
 This will run the example server in the `./example` directory.
 
 ## ENV VARS
-`LOADER_IO_VALIDATION`
+`LOADER_IO_VALIDATION`<br>
 
-`PORT`
+`PORT`<br>
 
-`LOCAL_TLS_PORT`
+`LOCAL_TLS_PORT`<br>
 
-`CACHE_CONTROL`
+`CACHE_CONTROL`<br>
 
-`ENVIRONMENT`
+`ENVIRONMENT`<br>
 
-`HOST`
+`HOST`<br>
 
-`DEFAULT_MAX_LISTENERS`
+`DEFAULT_MAX_LISTENERS`<br>
 
-`SURROGATE_CACHE_CONTROL`
+`SURROGATE_CACHE_CONTROL`<br>
 
-`SHOW_CNN_HAPI_CONFIG`  => Setting this to 'true' will show server instance configurations on `server.start()`. Requires `DEBUG=cnn-hapi*` to be a part of `DEBUG` capture group
+`SHOW_CNN_HAPI_CONFIG`  => Setting this to 'true' will show server instance configurations on `server.start()`. Requires `DEBUG=cnn-hapi*` to be a part of `DEBUG` capture group<br>
 
-`METRICS_FLUSHEVERY`
+`METRICS_FLUSHEVERY`<br>
 
 
 ## serverInstance(options)
