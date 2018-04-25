@@ -55,3 +55,100 @@ You can also navigate to localhost:5000 and see a served page.
 Swagger documentation - `localhost:5000/documentation`
 
 Healthcheck monitoring - `localhost:5000/__health`
+
+## Testing
+`$ cd <cnn-hapi-root>`
+`$ npm run example-server`
+This will run the example server in the `./example` directory.
+
+## ENV VARS
++ `LOADER_IO_VALIDATION`
+
++ `PORT`
+
++ `LOCAL_TLS_PORT`
+
++ `CACHE_CONTROL`
+
++ `ENVIRONMENT`
+
++ `HOST`
+
++ `DEFAULT_MAX_LISTENERS`
+
++ `SURROGATE_CACHE_CONTROL`
+
++ `SHOW_CNN_HAPI_CONFIG`  => Setting this to 'true' will show server instance configurations on `server.start()`. Requires `DEBUG=cnn-hapi*` to be a part of `DEBUG` capture group<br>
+
++ `METRICS_FLUSHEVERY`<br>
+
+
+## serverInstance(options)
+_The following options set defaults at the server level and can override CNN-Hapi Defaults_
+_Populate notes are in order of priority. Example: populate: `process.env.SOMEVALUE` || `options.someValue`. In that example if `process.env.SOMEVALUE` is not set it will default to `options.someValue`, etc, etc_
+_Manual override possibilites are expressed in `options.someValue`_
+
+_`options` is an object that can take the following keys_
+
++ `basePath`: project basePath,
+
++ `cacheControlHeader`: process.env.CACHE_CONTROL || 'max-age=60',
+
++ `customHeaders`: options.customHeaders || [],
+
++ `description`: options.description || `package.json` `description` key,
+
++ `environment`: process.env.ENVIRONMENT || process.env.NODE_ENV || options.environment || '',
+
++ `healthChecks`: options.healthChecks || [],
+
++ `host`: process.env.HOST || options.host || '0.0.0.0',
+
++ `loaderIoValidationKey`: options.loaderIoValidationKey || undefined,
+
++ `localTLS`: options.localTLS || null,
+
++ `maxListeners`: process.env.DEFAULT_MAX_LISTENERS || options.maxListeners || 10,
+
++ `name`: options.name || `package.json` `name` key,
+
++ `port`: process.env.PORT || options.port || 3000,
+
++ `surrogateCacheControl`:
+    process.env.SURROGATE_CACHE_CONTROL || options.surrogateCacheControl || 'max-age=360, stale-while-revalidate=60, stale-if-error=86400',
+
++ `version`:options.version || `package.json` `version` key,
+
++ `withGoodConsole`: options.withGoodConsole || false,
+
++ `withSwagger`: options.withSwagger || false
+
+## Override caching on individual routes
+_Using the reply.header() function can set headers on a singular route_
+
+```
+{
+    method: 'GET',
+    path: '/override-headers',
+    handler: (request, reply) => {
+      reply('Peep the response headers in swagger docs')
+      .header('Cache-Control', '2')
+      .header('Surrogate-Control', 'baz');
+    },
+    config: {
+      description: 'Example route for demonstrating how to  override headers by route',
+      tags: ['api']
+    }
+  },
+  ```
+_For explicit usage check this implementation in `./example/routes`_
+
+
+# Test
+
+`$ npm run example-server`
+
+It runs example server located in `./example`. Pass in ENV vars through the above command or hardcode into the package.json located in the `./example` directory.
+
+Go to {HOST}:{PORT}/documentation to view the new swagger docs and to test current `CNN-Hapi` logic.
+
