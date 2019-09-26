@@ -35,7 +35,7 @@
     "@hapi/good-console": "8.1.0",
     "@hapi/good-squeeze": "5.2.1",
     "@hapi/hapi": "18.4.0",
-    "@hapi/joi": "16.1.4",
+    "@hapi/joi": "15.1.1",
     "@hapi/inert": "5.2.1",
     "@hapi/podium": "3.4.0",
     "@hapi/subtext": "6.1.2",
