@@ -9,6 +9,7 @@
 require('isomorphic-fetch');
 
 const {resolve} = require('path');
+const Handlebars = require('handlebars');
 const hapi = require('../init'); // hapi = require('cnn-hapi'),
 const healthChecks = require('cnn-health')(resolve(__dirname, './config/healthcheck')).asArray();
 
@@ -52,6 +53,12 @@ hapiServer
 
     /* set the application routes */
     app.route(require('./routes'));
+
+    app.views({
+        engines: { html: Handlebars },
+        relativeTo: __dirname,
+        path: 'views'
+    })
 
     return app.start().then(() => {
       console.log('info', `Server name: ${server.registry.settings.name}`);
