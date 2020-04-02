@@ -7,7 +7,7 @@ module.exports = {
     {
       type: 'json',
       name: 'CNN Homepage',
-      url: 'https://mailcar.cnn.io/_health',
+      url: 'https://mailcar.cnn.io/_healthcheck',
       severity: 2,
       businessImpact: 'Its a HUGE deal',
       technicalSummary: 'god knows',

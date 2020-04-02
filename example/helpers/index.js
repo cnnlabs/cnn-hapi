@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  setupHealthCheck: (request, reply) => {
+  setupHealthCheck: (request, h) => {
     let payload,
       response,
       returnCode = 200,
@@ -41,8 +41,10 @@ module.exports = {
       2
     );
 
-    response = reply(payload).code(returnCode);
+    response = h.response(payload).code(returnCode);
     response.header('Cache-Control', 'private, no-cache, max-age=0');
     response.header('Content-Type', 'application/json');
+
+    return response;
   }
 };
