@@ -7,11 +7,14 @@
   "scripts": {
     "start": "DEBUG=cnn-hapi* ENVIRONMENT=dev HOSTEDGRAPHITE_APIKEY=1234 node app.js"
   },
+  "engines": {
+    "node": ">=12.16.1"
+  },
   "dependencies": {
-    "cnn-health": "0.2.0",
+    "cnn-health": "0.2.1",
     "cnn-metrics": "github:cnnlabs/cnn-metrics#develop",
-    "debug": "3.0.1",
-    "handlebars": "4.0.10",
+    "debug": "4.1.1",
+    "handlebars": "4.7.4",
     "isomorphic-fetch": "2.2.1",
     "lodash": "4.17.4"
   }
