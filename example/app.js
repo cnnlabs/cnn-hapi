@@ -8,10 +8,11 @@
 require('isomorphic-fetch');
 
 const {resolve} = require('path');
+const Handlebars = require('handlebars');
 const hapi = require('../init'); // hapi = require('cnn-hapi'),
 const healthChecks = require('cnn-health')(resolve(__dirname, './config/healthcheck')).asArray();
 
-const server = hapi({
+const hapiServer = hapi({
   basePath: __dirname,
 
   description: 'A Test Harness for building CNN-HAPI',
@@ -25,7 +26,7 @@ const server = hapi({
   withSwagger: true,
   host: 'localhost',
 
-  healthChecks: [...healthChecks, require('./config/otherchecks')],
+  healthChecks: [...healthChecks, ...require('./config/otherchecks')],
 
   customHeaders: [
     {
@@ -45,17 +46,25 @@ const server = hapi({
 });
 
 /* get the hapi server */
-const app = server.hapi;
+hapiServer
+        .then((server) => {
+    /* get the hapi server */
+    const app = server.hapi;
 
-/* set the application routes */
-app.route(require('./routes'));
+    /* set the application routes */
+    app.route(require('./routes'));
 
-app.start(function serverStart() {
-  app.connections.length &&
-    app.connections.forEach((connection) => console.log('info', `Server started at: ${connection.info.uri}`));
-  console.log('info', `Server name: ${server.name}`);
-  console.log('info', `Server version: ${server.version}`);
-  console.log('info', `Server environment: ${server.environment}`);
-  console.log('info', `Server in debug mode: ${server.isDebug}`);
-  console.log('info', 'Server Metrics:', server.metrics);
+    app.views({
+        engines: { html: Handlebars },
+        relativeTo: __dirname,
+        path: 'views'
+    });
+
+    return app.start().then(() => {
+        console.log('info', `Server name: ${server.registry.settings.name}`);
+        console.log('info', `Server version: ${server.registry.settings.version}`);
+        console.log('info', `Server environment: ${server.registry.settings.environment}`);
+        console.log('info', `Server in debug mode: ${server.registry.settings.isDebug}`);
+        console.log('info', 'Server Metrics:', server.registry.settings.metrics);
+    });
 });

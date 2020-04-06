@@ -1,6 +1,6 @@
 const Config = require('./lib/config');
-const Hapi = require('hapi');
-const Podium = require('podium');
+const Hapi = require('@hapi/hapi');
+const Podium = require('@hapi/podium');
 const Registry = require('./lib/registry');
 
 class Service extends Podium {
@@ -20,11 +20,9 @@ class Service extends Podium {
     }
 
     // spin up a new Hapi server
-    this.server = new Hapi.Server();
-
-    this.config.settings.localTLS && !this.config.settings.isProduction()
-      ? this.server.connection([this.config.httpsConnection, this.config.httpConnection])
-      : this.server.connection([this.config.httpConnection]);
+      this.server = this.config.settings.localTLS && !this.config.settings.isProduction()
+      ? new Hapi.Server(this.config.httpsConnection)
+      : new Hapi.Server(this.config.httpConnection);
 
     this.registry = new Registry(this.config, this.pkg);
     this.registry.registerDefaults();
@@ -37,15 +35,17 @@ class Service extends Podium {
     if (_instance === null || _instance === undefined) {
       _instance = new Service(options);
 
-      _instance.server.register(_instance.registry.bundle, (error) => {
-        if (error) {
-          console.error(error);
-          process.exit(1);
-        }
+        return Promise.all(
+            _instance.registry.bundle.map((bundle) => {
+                return _instance.server.register(bundle);
+            })
+        )
+        .then(() => _instance)
+        .catch((error) => {
+            console.log(error);
+            process.exit(1);
       });
     }
-
-    return _instance;
   }
 
   set routes(routes) {

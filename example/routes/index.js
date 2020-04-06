@@ -7,8 +7,8 @@ module.exports = [
   {
     method: 'GET',
     path: '/hello-router',
-    handler: (request, reply) => {
-      reply('Hello router').header('Cache-Control', 'max-age=130');
+    handler: (request, h) => {
+      return h.response('Hello router').header('Cache-Control', 'max-age=130');
     },
     config: {
       cache: {
@@ -21,8 +21,8 @@ module.exports = [
   {
     method: 'GET',
     path: '/default-cache',
-    handler: (request, reply) => {
-      reply('Hello router');
+    handler: (request, h) => {
+        return h.response('Hello router');
     },
     config: {
       description: 'View Response Headers in swagger docs to see default cache configuration',
@@ -32,8 +32,8 @@ module.exports = [
   {
     method: 'GET',
     path: '/override-headers',
-    handler: (request, reply) => {
-      reply('Peep the response headers in swagger docs')
+    handler: (request, h) => {
+        return h.response('Peep the response headers in swagger docs')
         .header('Cache-Control', '2')
         .header('Surrogate-Control', 'baz');
     },
@@ -54,8 +54,8 @@ module.exports = [
   {
     method: 'GET',
     path: '/__whatami',
-    handler: (request, reply) => {
-      reply().code(418);
+    handler: (request, h) => {
+        return h.response().code(418);
     },
     config: {
       description: 'Sending success code implementation',
@@ -65,9 +65,9 @@ module.exports = [
   {
     method: 'GET',
     path: '/_imgood',
-    handler: (request, reply) => reply(200),
+    handler: (request, h) => h.response.code(200),
     config: {
-      description: 'Another implementation of replying',
+      description: 'Another implementation of hing',
       tags: ['api']
     }
   },
@@ -83,8 +83,8 @@ module.exports = [
   {
     method: 'GET',
     path: '/__handlebarsTest',
-    handler: (request, reply) => {
-      reply.view('handlebars/index', {body: 'World!', title: 'Hello'});
+    handler: (request, h) => {
+        return h.response.view('handlebars/index', {body: 'World!', title: 'Hello'});
     },
     config: {
       description: 'Test Handlebars implementation',
