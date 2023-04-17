@@ -45,7 +45,7 @@
     "@hapi/joi": "15.1.1"
   },
   "devDependencies": {
-    "changelog-maker": "2.2.6",
+    "changelog-maker": "2.8.0",
     "esdoc": "1.1.0",
     "jsonlint": "1.6.2",
     "npm-check-updates": "3.1.0",
