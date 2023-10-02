@@ -33,7 +33,7 @@
   "dependencies": {
     "cnn-health": "0.2.1",
     "cnn-metrics": "0.5.0",
-    "debug": "4.1.1",
+    "debug": "4.3.1",
     "@hapi/good": "9.0.0",
     "@hapi/good-console": "9.0.0",
     "@hapi/good-squeeze": "6.0.0",
